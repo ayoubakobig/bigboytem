@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_540cb09e5eae715a71658f61792ac5f7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_540cb09e5eae715a71658f61792ac5f7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_540cb09e5eae715a71658f61792ac5f7 = L.map(
+                "map_540cb09e5eae715a71658f61792ac5f7",
+                {
+                    center: [45.471791691111115, -73.42355798777777],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3df67b0d328d81872bec7564a3c75aa7 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_3df67b0d328d81872bec7564a3c75aa7.addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var marker_39b53909286c31b9a288263bc7c53337 = L.marker(
+                [45.53508794, -73.65485832],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_57cdf86725f69b8bcf8109654f14cea1 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eMycelium Rem\u00e9dium\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e144.0 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_39b53909286c31b9a288263bc7c53337.setIcon(div_icon_57cdf86725f69b8bcf8109654f14cea1);
+        
+    
+        var popup_7561ae430cd88782b568175db4eb43ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8222d06707110bfd035daa682de47784 = $(`<div id="html_8222d06707110bfd035daa682de47784" style="width: 100.0%; height: 100.0%;"><b>Mycelium Remédium</b><br>Quantité: 144.0 tonnes/an</div>`)[0];
+                popup_7561ae430cd88782b568175db4eb43ec.setContent(html_8222d06707110bfd035daa682de47784);
+            
+        
+
+        marker_39b53909286c31b9a288263bc7c53337.bindPopup(popup_7561ae430cd88782b568175db4eb43ec)
+        ;
+
+        
+    
+    
+            marker_39b53909286c31b9a288263bc7c53337.bindTooltip(
+                `<div>
+                     Mycelium Remédium: 144.0 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_39b53909286c31b9a288263bc7c53337.setIcon(div_icon_57cdf86725f69b8bcf8109654f14cea1);
+            
+    
+            var marker_de5e206b2298c6b37ddf2ef0532048de = L.marker(
+                [45.539989, -73.550842],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_4f8b4f87b2802930826de3d8849f8b58 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eBlanc de Gris\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e2.4 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_de5e206b2298c6b37ddf2ef0532048de.setIcon(div_icon_4f8b4f87b2802930826de3d8849f8b58);
+        
+    
+        var popup_34c1c6844be4b50a78aeed1c854848e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a762576ae0c3309a292d1c0d14fa1be = $(`<div id="html_8a762576ae0c3309a292d1c0d14fa1be" style="width: 100.0%; height: 100.0%;"><b>Blanc de Gris</b><br>Quantité: 2.4 tonnes/an</div>`)[0];
+                popup_34c1c6844be4b50a78aeed1c854848e7.setContent(html_8a762576ae0c3309a292d1c0d14fa1be);
+            
+        
+
+        marker_de5e206b2298c6b37ddf2ef0532048de.bindPopup(popup_34c1c6844be4b50a78aeed1c854848e7)
+        ;
+
+        
+    
+    
+            marker_de5e206b2298c6b37ddf2ef0532048de.bindTooltip(
+                `<div>
+                     Blanc de Gris: 2.4 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_de5e206b2298c6b37ddf2ef0532048de.setIcon(div_icon_4f8b4f87b2802930826de3d8849f8b58);
+            
+    
+            var marker_27d5ff9757ba4ca84dd1d673f3966d61 = L.marker(
+                [45.54253893, -73.62951757],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_ecccd3225bff00e4e64772b5737f1c7a = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eETOH\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e9.6 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_27d5ff9757ba4ca84dd1d673f3966d61.setIcon(div_icon_ecccd3225bff00e4e64772b5737f1c7a);
+        
+    
+        var popup_ae2be5aa91c67f8764e0c67222bb1a6a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4338610429db03b242622ef64e2a687c = $(`<div id="html_4338610429db03b242622ef64e2a687c" style="width: 100.0%; height: 100.0%;"><b>ETOH</b><br>Quantité: 9.6 tonnes/an</div>`)[0];
+                popup_ae2be5aa91c67f8764e0c67222bb1a6a.setContent(html_4338610429db03b242622ef64e2a687c);
+            
+        
+
+        marker_27d5ff9757ba4ca84dd1d673f3966d61.bindPopup(popup_ae2be5aa91c67f8764e0c67222bb1a6a)
+        ;
+
+        
+    
+    
+            marker_27d5ff9757ba4ca84dd1d673f3966d61.bindTooltip(
+                `<div>
+                     ETOH: 9.6 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_27d5ff9757ba4ca84dd1d673f3966d61.setIcon(div_icon_ecccd3225bff00e4e64772b5737f1c7a);
+            
+    
+            var marker_598abeac1c411eb393db5d11291d53f4 = L.marker(
+                [45.207945, -72.747009],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_f14db89a5a8091f389526d163cc29413 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eBrome Composte Inc\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e170.0 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_598abeac1c411eb393db5d11291d53f4.setIcon(div_icon_f14db89a5a8091f389526d163cc29413);
+        
+    
+        var popup_81e207126d1ca4bbac822bdaf31b8688 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_92effde360346363f3c0cb4629410c37 = $(`<div id="html_92effde360346363f3c0cb4629410c37" style="width: 100.0%; height: 100.0%;"><b>Brome Composte Inc</b><br>Quantité: 170.0 tonnes/an</div>`)[0];
+                popup_81e207126d1ca4bbac822bdaf31b8688.setContent(html_92effde360346363f3c0cb4629410c37);
+            
+        
+
+        marker_598abeac1c411eb393db5d11291d53f4.bindPopup(popup_81e207126d1ca4bbac822bdaf31b8688)
+        ;
+
+        
+    
+    
+            marker_598abeac1c411eb393db5d11291d53f4.bindTooltip(
+                `<div>
+                     Brome Composte Inc: 170.0 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_598abeac1c411eb393db5d11291d53f4.setIcon(div_icon_f14db89a5a8091f389526d163cc29413);
+            
+    
+            var marker_1ba0529cb9155240d0afb56f39aaa815 = L.marker(
+                [45.50228716, -73.57063324],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_206b2770c67e372f3c6e5ca0f539d694 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003e3 Brasseurs\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e360.6 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_1ba0529cb9155240d0afb56f39aaa815.setIcon(div_icon_206b2770c67e372f3c6e5ca0f539d694);
+        
+    
+        var popup_25db92dae5409f6ba12050188b656742 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b4b312e7be5609e9734668cd1cad065a = $(`<div id="html_b4b312e7be5609e9734668cd1cad065a" style="width: 100.0%; height: 100.0%;"><b>3 Brasseurs</b><br>Quantité: 360.6 tonnes/an</div>`)[0];
+                popup_25db92dae5409f6ba12050188b656742.setContent(html_b4b312e7be5609e9734668cd1cad065a);
+            
+        
+
+        marker_1ba0529cb9155240d0afb56f39aaa815.bindPopup(popup_25db92dae5409f6ba12050188b656742)
+        ;
+
+        
+    
+    
+            marker_1ba0529cb9155240d0afb56f39aaa815.bindTooltip(
+                `<div>
+                     3 Brasseurs: 360.6 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1ba0529cb9155240d0afb56f39aaa815.setIcon(div_icon_206b2770c67e372f3c6e5ca0f539d694);
+            
+    
+            var marker_a2594a81fa20e9972d569a7bed793ad4 = L.marker(
+                [45.62641864, -73.55343656],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_acffc325fa290a8a7e2cdf7f038e06cd = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eLoop\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e28.8 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_a2594a81fa20e9972d569a7bed793ad4.setIcon(div_icon_acffc325fa290a8a7e2cdf7f038e06cd);
+        
+    
+        var popup_61eb00705924c895d7b0c725b3c9cf37 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fe6bf4a63c733a2c344e6f620e33c99f = $(`<div id="html_fe6bf4a63c733a2c344e6f620e33c99f" style="width: 100.0%; height: 100.0%;"><b>Loop</b><br>Quantité: 28.8 tonnes/an</div>`)[0];
+                popup_61eb00705924c895d7b0c725b3c9cf37.setContent(html_fe6bf4a63c733a2c344e6f620e33c99f);
+            
+        
+
+        marker_a2594a81fa20e9972d569a7bed793ad4.bindPopup(popup_61eb00705924c895d7b0c725b3c9cf37)
+        ;
+
+        
+    
+    
+            marker_a2594a81fa20e9972d569a7bed793ad4.bindTooltip(
+                `<div>
+                     Loop: 28.8 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2594a81fa20e9972d569a7bed793ad4.setIcon(div_icon_acffc325fa290a8a7e2cdf7f038e06cd);
+            
+    
+            var marker_2aa528ce86aa12da51f8e1db84d95686 = L.marker(
+                [45.23377514, -72.8554642],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_ad5fd8ec8436652a5d9cd3768289bf6b = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eVignoble de la Bauge\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e60.0 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_2aa528ce86aa12da51f8e1db84d95686.setIcon(div_icon_ad5fd8ec8436652a5d9cd3768289bf6b);
+        
+    
+        var popup_3892842ef4ca063f5e98c1ecb2b632b7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f2fccb43ad0363a23ad59ea332e10f73 = $(`<div id="html_f2fccb43ad0363a23ad59ea332e10f73" style="width: 100.0%; height: 100.0%;"><b>Vignoble de la Bauge</b><br>Quantité: 60.0 tonnes/an</div>`)[0];
+                popup_3892842ef4ca063f5e98c1ecb2b632b7.setContent(html_f2fccb43ad0363a23ad59ea332e10f73);
+            
+        
+
+        marker_2aa528ce86aa12da51f8e1db84d95686.bindPopup(popup_3892842ef4ca063f5e98c1ecb2b632b7)
+        ;
+
+        
+    
+    
+            marker_2aa528ce86aa12da51f8e1db84d95686.bindTooltip(
+                `<div>
+                     Vignoble de la Bauge: 60.0 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2aa528ce86aa12da51f8e1db84d95686.setIcon(div_icon_ad5fd8ec8436652a5d9cd3768289bf6b);
+            
+    
+            var marker_d8c5b0becfdf90da070f504a7111adc4 = L.marker(
+                [45.5266671, -73.5958877],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_9d5d40d4ce3bfd31db89146c4ba38838 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eStillgood\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e3000.0 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_d8c5b0becfdf90da070f504a7111adc4.setIcon(div_icon_9d5d40d4ce3bfd31db89146c4ba38838);
+        
+    
+        var popup_29d3e4a5f4ad4aab1a068f831e00a796 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35840dd6c888007e777a498bf1197d55 = $(`<div id="html_35840dd6c888007e777a498bf1197d55" style="width: 100.0%; height: 100.0%;"><b>Stillgood</b><br>Quantité: 3000.0 tonnes/an</div>`)[0];
+                popup_29d3e4a5f4ad4aab1a068f831e00a796.setContent(html_35840dd6c888007e777a498bf1197d55);
+            
+        
+
+        marker_d8c5b0becfdf90da070f504a7111adc4.bindPopup(popup_29d3e4a5f4ad4aab1a068f831e00a796)
+        ;
+
+        
+    
+    
+            marker_d8c5b0becfdf90da070f504a7111adc4.bindTooltip(
+                `<div>
+                     Stillgood: 3000.0 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d8c5b0becfdf90da070f504a7111adc4.setIcon(div_icon_9d5d40d4ce3bfd31db89146c4ba38838);
+            
+    
+            var marker_551fd45a311502c5980fb92b6efc0d05 = L.marker(
+                [45.53141631, -73.6543733],
+                {
+}
+            ).addTo(map_540cb09e5eae715a71658f61792ac5f7);
+        
+    
+            var div_icon_e02b42cbbcb658d460472e72fa9bdd03 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for precise positioning of text */\n        width: 80px;\n        height: 80px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange gradient */\n        color: #4A3B27; /* Dark brown text */\n        font-family: \u0027Georgia\u0027, serif; /* Elegant font */\n        font-size: 9pt; /* Adjusted for circle size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 2px 2px 4px rgba(0,0,0,0.4);\n        border: 1px solid #DAA520; /* Goldenrod border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; /* Change cursor to indicate it\u0027s not a standard marker */\n        padding: 5px; /* Add some padding inside the circle */\n        box-sizing: border-box; /* Ensure padding is included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eTricycle\u003c/div\u003e\n        \u003cdiv style=\"font-size: 7pt;\"\u003e48.0 t/an\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_551fd45a311502c5980fb92b6efc0d05.setIcon(div_icon_e02b42cbbcb658d460472e72fa9bdd03);
+        
+    
+        var popup_e5e59517edf8c295ee6a268f84bfe91e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79d556454f95454ff42e442f2a7185eb = $(`<div id="html_79d556454f95454ff42e442f2a7185eb" style="width: 100.0%; height: 100.0%;"><b>Tricycle</b><br>Quantité: 48.0 tonnes/an</div>`)[0];
+                popup_e5e59517edf8c295ee6a268f84bfe91e.setContent(html_79d556454f95454ff42e442f2a7185eb);
+            
+        
+
+        marker_551fd45a311502c5980fb92b6efc0d05.bindPopup(popup_e5e59517edf8c295ee6a268f84bfe91e)
+        ;
+
+        
+    
+    
+            marker_551fd45a311502c5980fb92b6efc0d05.bindTooltip(
+                `<div>
+                     Tricycle: 48.0 t/an
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_551fd45a311502c5980fb92b6efc0d05.setIcon(div_icon_e02b42cbbcb658d460472e72fa9bdd03);
+            
+</script>
+</html>

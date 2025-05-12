@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c73ebf24cf02a774495b21d41c9bcf78 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+             <h3 align="center" style="font-size:16px"><b>CO Quantities by Partner: Current vs Predicted (2050)</b></h3>
+             
+    
+            <div class="folium-map" id="map_c73ebf24cf02a774495b21d41c9bcf78" ></div>
+        
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 300px; height: 160px; 
+            border:2px solid grey; z-index:9999; font-size:14px;
+            background-color: white; padding: 10px; border-radius: 5px;">
+    <h4 style="margin-top: 0; color: #333;">Summary Statistics</h4>
+    <p><strong>Total Current CO:</strong> 840.00 tonnes/year</p>
+    <p><strong>Total Predicted CO (2050):</strong> 996.00 tonnes/year</p>
+    <p><strong>Increase:</strong> 156.00 tonnes/year (18.57%)</p>
+</div>
+</body>
+<script>
+    
+    
+            var map_c73ebf24cf02a774495b21d41c9bcf78 = L.map(
+                "map_c73ebf24cf02a774495b21d41c9bcf78",
+                {
+                    center: [45.471791691111115, -73.42355798777777],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4f5a00208433c02d01bba3d0f3531e0c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4f5a00208433c02d01bba3d0f3531e0c.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            tile_layer_4f5a00208433c02d01bba3d0f3531e0c.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            var marker_cluster_d4b3bdac87f305cc591b5513dd9e1210 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_2eea9519945a9b05d8c0e355aac810ac = L.marker(
+                [45.53508794, -73.65485832],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_342e8af68df57ea21f1c1591f80dcbfa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#dfef00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f86f970dd9f2438889608834729badd0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e27cf286e97b6bd762d2102b7b0c3c1a = $(`<div id="html_e27cf286e97b6bd762d2102b7b0c3c1a" style="width: 100.0%; height: 100.0%;">     <strong>Mycelium Remédium</strong><br>     Current CO: 80.00 tonnes/year<br>     </div>`)[0];
+                popup_f86f970dd9f2438889608834729badd0.setContent(html_e27cf286e97b6bd762d2102b7b0c3c1a);
+            
+        
+
+        marker_2eea9519945a9b05d8c0e355aac810ac.bindPopup(popup_f86f970dd9f2438889608834729badd0)
+        ;
+
+        
+    
+    
+            marker_2eea9519945a9b05d8c0e355aac810ac.bindTooltip(
+                `<div>
+                     Mycelium Remédium: 80.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2eea9519945a9b05d8c0e355aac810ac.setIcon(icon_342e8af68df57ea21f1c1591f80dcbfa);
+            
+    
+            var marker_12fc6f2aa63bbc4bfb63772b51a58223 = L.marker(
+                [45.539989, -73.550842],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_ca9746df5fbd1a28261db3df7f0e9094 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#59ad00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c72f14ab68a5167b7b083c827f319188 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05ab6ef8715ed842ececa3a4216f1bf0 = $(`<div id="html_05ab6ef8715ed842ececa3a4216f1bf0" style="width: 100.0%; height: 100.0%;">     <strong>Blanc de Gris</strong><br>     Current CO: 50.00 tonnes/year<br>     </div>`)[0];
+                popup_c72f14ab68a5167b7b083c827f319188.setContent(html_05ab6ef8715ed842ececa3a4216f1bf0);
+            
+        
+
+        marker_12fc6f2aa63bbc4bfb63772b51a58223.bindPopup(popup_c72f14ab68a5167b7b083c827f319188)
+        ;
+
+        
+    
+    
+            marker_12fc6f2aa63bbc4bfb63772b51a58223.bindTooltip(
+                `<div>
+                     Blanc de Gris: 50.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12fc6f2aa63bbc4bfb63772b51a58223.setIcon(icon_ca9746df5fbd1a28261db3df7f0e9094);
+            
+    
+            var marker_878ef52afc06621f45bf4badc20e654a = L.marker(
+                [45.54253893, -73.62951757],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_6a4ddf3156b6ea0476ff380d053f7e3f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#ffcc00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c44c20201c13acfb7bfea1cf4cbea251 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0722087439c901e4bd3260f7fc28c694 = $(`<div id="html_0722087439c901e4bd3260f7fc28c694" style="width: 100.0%; height: 100.0%;">     <strong>ETOH</strong><br>     Current CO: 120.00 tonnes/year<br>     </div>`)[0];
+                popup_c44c20201c13acfb7bfea1cf4cbea251.setContent(html_0722087439c901e4bd3260f7fc28c694);
+            
+        
+
+        marker_878ef52afc06621f45bf4badc20e654a.bindPopup(popup_c44c20201c13acfb7bfea1cf4cbea251)
+        ;
+
+        
+    
+    
+            marker_878ef52afc06621f45bf4badc20e654a.bindTooltip(
+                `<div>
+                     ETOH: 120.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_878ef52afc06621f45bf4badc20e654a.setIcon(icon_6a4ddf3156b6ea0476ff380d053f7e3f);
+            
+    
+            var marker_f4e83f2388e30ae4d9b0df98115120e0 = L.marker(
+                [45.207945, -72.747009],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_bf5d66f0a462f0c43bb0f77126487131 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#ffeb00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_133b97bc6cf09df57f61cb63cdb5818d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c781a710dceee1b9402a915489643926 = $(`<div id="html_c781a710dceee1b9402a915489643926" style="width: 100.0%; height: 100.0%;">     <strong>Brome Composte Inc</strong><br>     Current CO: 100.00 tonnes/year<br>     </div>`)[0];
+                popup_133b97bc6cf09df57f61cb63cdb5818d.setContent(html_c781a710dceee1b9402a915489643926);
+            
+        
+
+        marker_f4e83f2388e30ae4d9b0df98115120e0.bindPopup(popup_133b97bc6cf09df57f61cb63cdb5818d)
+        ;
+
+        
+    
+    
+            marker_f4e83f2388e30ae4d9b0df98115120e0.bindTooltip(
+                `<div>
+                     Brome Composte Inc: 100.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f4e83f2388e30ae4d9b0df98115120e0.setIcon(icon_bf5d66f0a462f0c43bb0f77126487131);
+            
+    
+            var marker_b0f7c448dbb7eeca71a0a7889702cd2e = L.marker(
+                [45.50228716, -73.57063324],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_f2827712fe3956f0cf61193db959a19c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#ffac00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2bb926fbcb451b3ebe50e6fdd1abc473 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bd712bb940f2077defaad4cae06ca0e1 = $(`<div id="html_bd712bb940f2077defaad4cae06ca0e1" style="width: 100.0%; height: 100.0%;">     <strong>3 Brasseurs</strong><br>     Current CO: 140.00 tonnes/year<br>     </div>`)[0];
+                popup_2bb926fbcb451b3ebe50e6fdd1abc473.setContent(html_bd712bb940f2077defaad4cae06ca0e1);
+            
+        
+
+        marker_b0f7c448dbb7eeca71a0a7889702cd2e.bindPopup(popup_2bb926fbcb451b3ebe50e6fdd1abc473)
+        ;
+
+        
+    
+    
+            marker_b0f7c448dbb7eeca71a0a7889702cd2e.bindTooltip(
+                `<div>
+                     3 Brasseurs: 140.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b0f7c448dbb7eeca71a0a7889702cd2e.setIcon(icon_f2827712fe3956f0cf61193db959a19c);
+            
+    
+            var marker_e584fc5f1572580b45374b87bc5b7176 = L.marker(
+                [45.62641864, -73.55343656],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_ac73a81d13d575be5f00c4f6c0c8ede2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#86c300ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d9b61d83fbbab35a49e9b980647cf235 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d0a476904077584550a10209c43aabbd = $(`<div id="html_d0a476904077584550a10209c43aabbd" style="width: 100.0%; height: 100.0%;">     <strong>Loop</strong><br>     Current CO: 60.00 tonnes/year<br>     </div>`)[0];
+                popup_d9b61d83fbbab35a49e9b980647cf235.setContent(html_d0a476904077584550a10209c43aabbd);
+            
+        
+
+        marker_e584fc5f1572580b45374b87bc5b7176.bindPopup(popup_d9b61d83fbbab35a49e9b980647cf235)
+        ;
+
+        
+    
+    
+            marker_e584fc5f1572580b45374b87bc5b7176.bindTooltip(
+                `<div>
+                     Loop: 60.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e584fc5f1572580b45374b87bc5b7176.setIcon(icon_ac73a81d13d575be5f00c4f6c0c8ede2);
+            
+    
+            var marker_2cb9ba036c5fe2b11be81577d747b0e5 = L.marker(
+                [45.23377514, -72.8554642],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_c6f34dc0c744106a078741add32d6f8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#ff5b00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bc3456e320a2948afbd3c49781935cb8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1a2a8faa57fb1673f887e6aa1397fd87 = $(`<div id="html_1a2a8faa57fb1673f887e6aa1397fd87" style="width: 100.0%; height: 100.0%;">     <strong>Vignoble de la Bauge</strong><br>     Current CO: 170.00 tonnes/year<br>     </div>`)[0];
+                popup_bc3456e320a2948afbd3c49781935cb8.setContent(html_1a2a8faa57fb1673f887e6aa1397fd87);
+            
+        
+
+        marker_2cb9ba036c5fe2b11be81577d747b0e5.bindPopup(popup_bc3456e320a2948afbd3c49781935cb8)
+        ;
+
+        
+    
+    
+            marker_2cb9ba036c5fe2b11be81577d747b0e5.bindTooltip(
+                `<div>
+                     Vignoble de la Bauge: 170.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2cb9ba036c5fe2b11be81577d747b0e5.setIcon(icon_c6f34dc0c744106a078741add32d6f8d);
+            
+    
+            var marker_327fbe3e6c7045ac6b53241bb747fd62 = L.marker(
+                [45.5266671, -73.5958877],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_658ba4ec9fe35dc948f3fe75f88cb696 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#008000ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30d7d6abbfb50394ab2b9bd3eb661389 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7aba737a4853aacb6fc6139e519ab280 = $(`<div id="html_7aba737a4853aacb6fc6139e519ab280" style="width: 100.0%; height: 100.0%;">     <strong>Stillgood</strong><br>     Current CO: 30.00 tonnes/year<br>     </div>`)[0];
+                popup_30d7d6abbfb50394ab2b9bd3eb661389.setContent(html_7aba737a4853aacb6fc6139e519ab280);
+            
+        
+
+        marker_327fbe3e6c7045ac6b53241bb747fd62.bindPopup(popup_30d7d6abbfb50394ab2b9bd3eb661389)
+        ;
+
+        
+    
+    
+            marker_327fbe3e6c7045ac6b53241bb747fd62.bindTooltip(
+                `<div>
+                     Stillgood: 30.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_327fbe3e6c7045ac6b53241bb747fd62.setIcon(icon_658ba4ec9fe35dc948f3fe75f88cb696);
+            
+    
+            var marker_68055d5081d7d828e33c8780e8659ac1 = L.marker(
+                [45.53141631, -73.6543733],
+                {
+}
+            ).addTo(marker_cluster_d4b3bdac87f305cc591b5513dd9e1210);
+        
+    
+            var icon_230399e56cd0a101634f30ea38a1fb56 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "#fffb00ff",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2647bdc980d10a2c4204dea40bad7c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_21605cdd0b8c044aaf58bd02c628ca05 = $(`<div id="html_21605cdd0b8c044aaf58bd02c628ca05" style="width: 100.0%; height: 100.0%;">     <strong>Tricycle</strong><br>     Current CO: 90.00 tonnes/year<br>     </div>`)[0];
+                popup_a2647bdc980d10a2c4204dea40bad7c3.setContent(html_21605cdd0b8c044aaf58bd02c628ca05);
+            
+        
+
+        marker_68055d5081d7d828e33c8780e8659ac1.bindPopup(popup_a2647bdc980d10a2c4204dea40bad7c3)
+        ;
+
+        
+    
+    
+            marker_68055d5081d7d828e33c8780e8659ac1.bindTooltip(
+                `<div>
+                     Tricycle: 90.00 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68055d5081d7d828e33c8780e8659ac1.setIcon(icon_230399e56cd0a101634f30ea38a1fb56);
+            
+    
+            marker_cluster_d4b3bdac87f305cc591b5513dd9e1210.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+    var color_map_5df4d4b718f327ae22d8f7ad2be39fb5 = {};
+
+    
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.color = d3.scale.threshold()
+              .domain([30.0, 30.343830518179214, 30.68766103635843, 31.031491554537645, 31.37532207271686, 31.719152590896076, 32.06298310907529, 32.40681362725451, 32.75064414543372, 33.094474663612935, 33.43830518179215, 33.78213569997136, 34.12596621815058, 34.4697967363298, 34.81362725450901, 35.157457772688225, 35.50128829086744, 35.84511880904665, 36.18894932722587, 36.53277984540509, 36.8766103635843, 37.220440881763516, 37.56427139994273, 37.90810191812194, 38.25193243630116, 38.59576295448038, 38.93959347265959, 39.283423990838806, 39.62725450901802, 39.97108502719723, 40.31491554537645, 40.65874606355567, 41.00257658173488, 41.346407099914096, 41.69023761809331, 42.03406813627252, 42.37789865445174, 42.72172917263096, 43.06555969081017, 43.409390208989386, 43.7532207271686, 44.097051245347814, 44.44088176352703, 44.78471228170625, 45.12854279988546, 45.472373318064676, 45.81620383624389, 46.160034354423104, 46.50386487260232, 46.84769539078154, 47.191525908960756, 47.53535642713997, 47.87918694531918, 48.223017463498394, 48.56684798167761, 48.91067849985683, 49.254509018036046, 49.598339536215256, 49.94217005439447, 50.286000572573684, 50.6298310907529, 50.97366160893212, 51.317492127111336, 51.661322645290554, 52.00515316346976, 52.348983681648974, 52.69281419982819, 53.03664471800741, 53.380475236186626, 53.72430575436584, 54.068136272545054, 54.411966790724264, 54.75579730890348, 55.0996278270827, 55.44345834526192, 55.78728886344113, 56.13111938162034, 56.474949899799554, 56.81878041797877, 57.16261093615799, 57.50644145433721, 57.85027197251642, 58.194102490695634, 58.537933008874845, 58.88176352705406, 59.22559404523328, 59.56942456341249, 59.91325508159171, 60.25708559977092, 60.600916117950135, 60.94474663612935, 61.28857715430857, 61.63240767248779, 61.976238190667, 62.320068708846215, 62.663899227025425, 63.00772974520464, 63.35156026338385, 63.69539078156308, 64.03922129974228, 64.38305181792151, 64.72688233610072, 65.07071285427995, 65.41454337245915, 65.75837389063835, 66.10220440881758, 66.44603492699679, 66.78986544517602, 67.13369596335522, 67.47752648153444, 67.82135699971366, 68.16518751789286, 68.50901803607209, 68.8528485542513, 69.19667907243051, 69.54050959060973, 69.88434010878893, 70.22817062696816, 70.57200114514737, 70.91583166332659, 71.2596621815058, 71.60349269968502, 71.94732321786424, 72.29115373604344, 72.63498425422267, 72.97881477240188, 73.32264529058111, 73.66647580876031, 74.01030632693951, 74.35413684511875, 74.69796736329795, 75.04179788147718, 75.38562839965638, 75.7294589178356, 76.07328943601482, 76.41711995419402, 76.76095047237325, 77.10478099055246, 77.44861150873167, 77.79244202691089, 78.13627254509011, 78.48010306326933, 78.82393358144853, 79.16776409962775, 79.51159461780696, 79.85542513598618, 80.1992556541654, 80.5430861723446, 80.88691669052383, 81.23074720870304, 81.57457772688225, 81.91840824506147, 82.26223876324067, 82.6060692814199, 82.94989979959911, 83.29373031777834, 83.63756083595754, 83.98139135413676, 84.32522187231598, 84.6690523904952, 85.01288290867441, 85.35671342685362, 85.70054394503283, 86.04437446321205, 86.38820498139127, 86.73203549957049, 87.07586601774969, 87.4196965359289, 87.76352705410812, 88.10735757228734, 88.45118809046656, 88.79501860864576, 89.13884912682498, 89.4826796450042, 89.82651016318341, 90.17034068136263, 90.51417119954183, 90.85800171772107, 91.20183223590027, 91.5456627540795, 91.8894932722587, 92.23332379043792, 92.57715430861714, 92.92098482679636, 93.26481534497557, 93.60864586315478, 93.952476381334, 94.29630689951321, 94.64013741769243, 94.98396793587165, 95.32779845405085, 95.67162897223007, 96.01545949040928, 96.3592900085885, 96.7031205267677, 97.04695104494694, 97.39078156312615, 97.73461208130536, 98.07844259948457, 98.42227311766379, 98.76610363584301, 99.10993415402221, 99.45376467220143, 99.79759519038065, 100.14142570855988, 100.48525622673908, 100.8290867449183, 101.17291726309752, 101.51674778127672, 101.86057829945594, 102.20440881763516, 102.54823933581437, 102.89206985399358, 103.2359003721728, 103.57973089035202, 103.92356140853124, 104.26739192671045, 104.61122244488966, 104.95505296306888, 105.29888348124808, 105.6427139994273, 105.98654451760652, 106.33037503578574, 106.67420555396495, 107.01803607214417, 107.36186659032339, 107.7056971085026, 108.04952762668181, 108.39335814486103, 108.73718866304024, 109.08101918121945, 109.42484969939866, 109.76868021757788, 110.11251073575711, 110.45634125393632, 110.80017177211553, 111.14400229029475, 111.48783280847397, 111.83166332665317, 112.17549384483239, 112.5193243630116, 112.86315488119081, 113.20698539937004, 113.55081591754926, 113.89464643572848, 114.23847695390768, 114.5823074720869, 114.92613799026611, 115.26996850844533, 115.61379902662453, 115.95762954480375, 116.30146006298297, 116.6452905811622, 116.9891210993414, 117.33295161752062, 117.67678213569984, 118.02061265387904, 118.36444317205826, 118.70827369023748, 119.0521042084167, 119.3959347265959, 119.73976524477513, 120.08359576295435, 120.42742628113356, 120.77125679931277, 121.11508731749198, 121.4589178356712, 121.8027483538504, 122.14657887202962, 122.49040939020884, 122.83423990838806, 123.17807042656727, 123.52190094474649, 123.86573146292571, 124.20956198110493, 124.55339249928413, 124.89722301746335, 125.24105353564256, 125.58488405382177, 125.92871457200098, 126.27254509018022, 126.61637560835943, 126.96020612653864, 127.30403664471785, 127.64786716289707, 127.99169768107629, 128.3355281992555, 128.6793587174347, 129.02318923561393, 129.36701975379313, 129.71085027197236, 130.05468079015156, 130.3985113083308, 130.74234182651, 131.0861723446892, 131.43000286286843, 131.77383338104767, 132.11766389922684, 132.46149441740607, 132.8053249355853, 133.1491554537645, 133.4929859719437, 133.83681649012294, 134.18064700830217, 134.52447752648135, 134.86830804466058, 135.2121385628398, 135.55596908101901, 135.89979959919822, 136.24363011737745, 136.58746063555668, 136.93129115373586, 137.2751216719151, 137.61895219009432, 137.96278270827352, 138.30661322645273, 138.65044374463196, 138.99427426281116, 139.3381047809904, 139.6819352991696, 140.02576581734883, 140.36959633552803, 140.71342685370723, 141.05725737188646, 141.40108789006567, 141.74491840824487, 142.0887489264241, 142.4325794446033, 142.77640996278254, 143.12024048096174, 143.46407099914097, 143.80790151732018, 144.15173203549938, 144.4955625536786, 144.8393930718578, 145.18322359003702, 145.52705410821625, 145.87088462639548, 146.21471514457468, 146.5585456627539, 146.90237618093312, 147.24620669911232, 147.59003721729152, 147.93386773547076, 148.27769825364996, 148.62152877182916, 148.9653592900084, 149.30918980818763, 149.65302032636683, 149.99685084454603, 150.34068136272526, 150.6845118809045, 151.02834239908367, 151.3721729172629, 151.71600343544213, 152.0598339536213, 152.40366447180054, 152.74749498997977, 153.091325508159, 153.43515602633818, 153.7789865445174, 154.12281706269664, 154.46664758087584, 154.81047809905505, 155.15430861723428, 155.49813913541348, 155.8419696535927, 156.18580017177192, 156.52963068995115, 156.87346120813035, 157.21729172630955, 157.56112224448879, 157.904952762668, 158.2487832808472, 158.59261379902642, 158.93644431720566, 159.28027483538486, 159.62410535356406, 159.9679358717433, 160.3117663899225, 160.6555969081017, 160.99942742628093, 161.34325794446013, 161.68708846263937, 162.03091898081857, 162.3747494989978, 162.718580017177, 163.0624105353562, 163.4062410535354, 163.75007157171464, 164.09390208989387, 164.43773260807308, 164.7815631262523, 165.1253936444315, 165.46922416261071, 165.81305468078992, 166.15688519896915, 166.50071571714835, 166.84454623532758, 167.18837675350682, 167.53220727168602, 167.87603778986525, 168.21986830804443, 168.56369882622366, 168.90752934440286, 169.2513598625821, 169.5951903807613, 169.93902089894053, 170.28285141711976, 170.62668193529893, 170.97051245347816, 171.31434297165737, 171.6581734898366, 172.0020040080158, 172.34583452619503, 172.68966504437424, 173.03349556255344, 173.37732608073264, 173.72115659891188, 174.0649871170911, 174.4088176352703, 174.75264815344954, 175.09647867162874, 175.44030918980798, 175.78413970798715, 176.12797022616638, 176.4718007443456, 176.81563126252482, 177.15946178070405, 177.50329229888325, 177.84712281706248, 178.19095333524166, 178.5347838534209, 178.8786143716001, 179.22244488977933, 179.56627540795853, 179.91010592613776, 180.253936444317, 180.59776696249617, 180.9415974806754, 181.2854279988546, 181.62925851703383, 181.97308903521304, 182.31691955339227, 182.66075007157147, 183.0045805897507, 183.3484111079299, 183.6922416261091, 184.03607214428834, 184.37990266246754, 184.72373318064678, 185.06756369882598, 185.4113942170052, 185.75522473518438, 186.09905525336362, 186.44288577154282, 186.78671628972205, 187.13054680790128, 187.47437732608049, 187.81820784425972, 188.1620383624389, 188.50586888061812, 188.84969939879733, 189.19352991697656, 189.53736043515576, 189.881190953335, 190.22502147151422, 190.56885198969343, 190.91268250787263, 191.25651302605183, 191.60034354423107, 191.94417406241027, 192.2880045805895, 192.6318350987687, 192.97566561694794, 193.31949613512714, 193.66332665330634, 194.00715717148557, 194.35098768966478, 194.694818207844, 195.0386487260232, 195.38247924420244, 195.72630976238162, 196.07014028056085, 196.41397079874008, 196.75780131691928, 197.10163183509852, 197.44546235327772, 197.78929287145695, 198.13312338963615, 198.47695390781536, 198.82078442599456, 199.1646149441738, 199.508445462353, 199.85227598053223, 200.19610649871146, 200.53993701689066, 200.88376753506986, 201.22759805324907, 201.5714285714283])
+              .range(['#008000ff', '#018100ff', '#038200ff', '#048200ff', '#068300ff', '#078400ff', '#098500ff', '#0a8500ff', '#0c8600ff', '#0d8700ff', '#0f8800ff', '#108800ff', '#128900ff', '#148a00ff', '#158b00ff', '#178b00ff', '#188c00ff', '#1a8d00ff', '#1b8e00ff', '#1d8f00ff', '#1e8f00ff', '#209000ff', '#219100ff', '#239200ff', '#249200ff', '#269300ff', '#289400ff', '#299500ff', '#2b9500ff', '#2c9600ff', '#2e9700ff', '#2f9800ff', '#319900ff', '#329900ff', '#349a00ff', '#359b00ff', '#379c00ff', '#389c00ff', '#3a9d00ff', '#3c9e00ff', '#3d9f00ff', '#3f9f00ff', '#40a000ff', '#42a100ff', '#43a200ff', '#45a200ff', '#46a300ff', '#48a400ff', '#49a500ff', '#4ba600ff', '#4ca600ff', '#4ea700ff', '#50a800ff', '#51a900ff', '#53a900ff', '#54aa00ff', '#56ab00ff', '#57ac00ff', '#59ac00ff', '#5aad00ff', '#5cae00ff', '#5daf00ff', '#5fb000ff', '#60b000ff', '#62b100ff', '#64b200ff', '#65b300ff', '#67b300ff', '#68b400ff', '#6ab500ff', '#6bb600ff', '#6db600ff', '#6eb700ff', '#70b800ff', '#71b900ff', '#73b900ff', '#74ba00ff', '#76bb00ff', '#78bc00ff', '#79bd00ff', '#7bbd00ff', '#7cbe00ff', '#7ebf00ff', '#7fc000ff', '#81c000ff', '#82c100ff', '#84c200ff', '#85c300ff', '#87c300ff', '#88c400ff', '#8ac500ff', '#8cc600ff', '#8dc700ff', '#8fc700ff', '#90c800ff', '#92c900ff', '#93ca00ff', '#95ca00ff', '#96cb00ff', '#98cc00ff', '#99cd00ff', '#9bcd00ff', '#9cce00ff', '#9ecf00ff', '#a0d000ff', '#a1d000ff', '#a3d100ff', '#a4d200ff', '#a6d300ff', '#a7d400ff', '#a9d400ff', '#aad500ff', '#acd600ff', '#add700ff', '#afd700ff', '#b0d800ff', '#b2d900ff', '#b4da00ff', '#b5da00ff', '#b7db00ff', '#b8dc00ff', '#badd00ff', '#bbde00ff', '#bdde00ff', '#bedf00ff', '#c0e000ff', '#c1e100ff', '#c3e100ff', '#c5e200ff', '#c6e300ff', '#c8e400ff', '#c9e400ff', '#cbe500ff', '#cce600ff', '#cee700ff', '#cfe700ff', '#d1e800ff', '#d2e900ff', '#d4ea00ff', '#d5eb00ff', '#d7eb00ff', '#d9ec00ff', '#daed00ff', '#dcee00ff', '#ddee00ff', '#dfef00ff', '#e0f000ff', '#e2f100ff', '#e3f100ff', '#e5f200ff', '#e6f300ff', '#e8f400ff', '#e9f500ff', '#ebf500ff', '#edf600ff', '#eef700ff', '#f0f800ff', '#f1f800ff', '#f3f900ff', '#f4fa00ff', '#f6fb00ff', '#f7fb00ff', '#f9fc00ff', '#fafd00ff', '#fcfe00ff', '#fdfe00ff', '#ffff00ff', '#ffff00ff', '#ffff00ff', '#fffe00ff', '#fffe00ff', '#fffd00ff', '#fffc00ff', '#fffc00ff', '#fffb00ff', '#fffb00ff', '#fffa00ff', '#fffa00ff', '#fff900ff', '#fff900ff', '#fff800ff', '#fff800ff', '#fff700ff', '#fff600ff', '#fff600ff', '#fff500ff', '#fff500ff', '#fff400ff', '#fff400ff', '#fff300ff', '#fff300ff', '#fff200ff', '#fff200ff', '#fff100ff', '#fff000ff', '#fff000ff', '#ffef00ff', '#ffef00ff', '#ffee00ff', '#ffee00ff', '#ffed00ff', '#ffed00ff', '#ffec00ff', '#ffec00ff', '#ffeb00ff', '#ffea00ff', '#ffea00ff', '#ffe900ff', '#ffe900ff', '#ffe800ff', '#ffe800ff', '#ffe700ff', '#ffe700ff', '#ffe600ff', '#ffe600ff', '#ffe500ff', '#ffe500ff', '#ffe400ff', '#ffe300ff', '#ffe300ff', '#ffe200ff', '#ffe200ff', '#ffe100ff', '#ffe100ff', '#ffe000ff', '#ffe000ff', '#ffdf00ff', '#ffdf00ff', '#ffde00ff', '#ffdd00ff', '#ffdd00ff', '#ffdc00ff', '#ffdc00ff', '#ffdb00ff', '#ffdb00ff', '#ffda00ff', '#ffda00ff', '#ffd900ff', '#ffd900ff', '#ffd800ff', '#ffd700ff', '#ffd700ff', '#ffd600ff', '#ffd600ff', '#ffd500ff', '#ffd500ff', '#ffd400ff', '#ffd400ff', '#ffd300ff', '#ffd300ff', '#ffd200ff', '#ffd200ff', '#ffd100ff', '#ffd000ff', '#ffd000ff', '#ffcf00ff', '#ffcf00ff', '#ffce00ff', '#ffce00ff', '#ffcd00ff', '#ffcd00ff', '#ffcc00ff', '#ffcc00ff', '#ffcb00ff', '#ffca00ff', '#ffca00ff', '#ffc900ff', '#ffc900ff', '#ffc800ff', '#ffc800ff', '#ffc700ff', '#ffc700ff', '#ffc600ff', '#ffc600ff', '#ffc500ff', '#ffc400ff', '#ffc400ff', '#ffc300ff', '#ffc300ff', '#ffc200ff', '#ffc200ff', '#ffc100ff', '#ffc100ff', '#ffc000ff', '#ffc000ff', '#ffbf00ff', '#ffbe00ff', '#ffbe00ff', '#ffbd00ff', '#ffbd00ff', '#ffbc00ff', '#ffbc00ff', '#ffbb00ff', '#ffbb00ff', '#ffba00ff', '#ffba00ff', '#ffb900ff', '#ffb900ff', '#ffb800ff', '#ffb700ff', '#ffb700ff', '#ffb600ff', '#ffb600ff', '#ffb500ff', '#ffb500ff', '#ffb400ff', '#ffb400ff', '#ffb300ff', '#ffb300ff', '#ffb200ff', '#ffb100ff', '#ffb100ff', '#ffb000ff', '#ffb000ff', '#ffaf00ff', '#ffaf00ff', '#ffae00ff', '#ffae00ff', '#ffad00ff', '#ffad00ff', '#ffac00ff', '#ffab00ff', '#ffab00ff', '#ffaa00ff', '#ffaa00ff', '#ffa900ff', '#ffa900ff', '#ffa800ff', '#ffa800ff', '#ffa700ff', '#ffa700ff', '#ffa600ff', '#ffa600ff', '#ffa500ff', '#ffa400ff', '#ffa300ff', '#ffa200ff', '#ffa100ff', '#ffa000ff', '#ff9f00ff', '#ff9e00ff', '#ff9d00ff', '#ff9c00ff', '#ff9b00ff', '#ff9a00ff', '#ff9900ff', '#ff9800ff', '#ff9700ff', '#ff9600ff', '#ff9500ff', '#ff9400ff', '#ff9300ff', '#ff9200ff', '#ff9100ff', '#ff9000ff', '#ff8f00ff', '#ff8e00ff', '#ff8d00ff', '#ff8c00ff', '#ff8b00ff', '#ff8a00ff', '#ff8900ff', '#ff8800ff', '#ff8700ff', '#ff8600ff', '#ff8500ff', '#ff8400ff', '#ff8300ff', '#ff8200ff', '#ff8100ff', '#ff8000ff', '#ff7f00ff', '#ff7e00ff', '#ff7d00ff', '#ff7c00ff', '#ff7b00ff', '#ff7a00ff', '#ff7900ff', '#ff7800ff', '#ff7700ff', '#ff7600ff', '#ff7500ff', '#ff7400ff', '#ff7300ff', '#ff7200ff', '#ff7100ff', '#ff7000ff', '#ff6f00ff', '#ff6e00ff', '#ff6d00ff', '#ff6c00ff', '#ff6b00ff', '#ff6a00ff', '#ff6900ff', '#ff6800ff', '#ff6700ff', '#ff6600ff', '#ff6500ff', '#ff6400ff', '#ff6300ff', '#ff6200ff', '#ff6100ff', '#ff6000ff', '#ff5f00ff', '#ff5e00ff', '#ff5d00ff', '#ff5c00ff', '#ff5b00ff', '#ff5a00ff', '#ff5900ff', '#ff5800ff', '#ff5700ff', '#ff5600ff', '#ff5500ff', '#ff5400ff', '#ff5300ff', '#ff5200ff', '#ff5100ff', '#ff5000ff', '#ff4f00ff', '#ff4e00ff', '#ff4d00ff', '#ff4c00ff', '#ff4b00ff', '#ff4a00ff', '#ff4900ff', '#ff4800ff', '#ff4700ff', '#ff4600ff', '#ff4500ff', '#ff4400ff', '#ff4300ff', '#ff4200ff', '#ff4100ff', '#ff4000ff', '#ff3f00ff', '#ff3e00ff', '#ff3d00ff', '#ff3c00ff', '#ff3b00ff', '#ff3a00ff', '#ff3900ff', '#ff3800ff', '#ff3700ff', '#ff3600ff', '#ff3500ff', '#ff3400ff', '#ff3300ff', '#ff3200ff', '#ff3100ff', '#ff3000ff', '#ff2f00ff', '#ff2e00ff', '#ff2d00ff', '#ff2c00ff', '#ff2b00ff', '#ff2a00ff', '#ff2900ff', '#ff2800ff', '#ff2700ff', '#ff2600ff', '#ff2500ff', '#ff2400ff', '#ff2300ff', '#ff2200ff', '#ff2100ff', '#ff2000ff', '#ff1f00ff', '#ff1e00ff', '#ff1d00ff', '#ff1c00ff', '#ff1b00ff', '#ff1a00ff', '#ff1900ff', '#ff1800ff', '#ff1700ff', '#ff1600ff', '#ff1500ff', '#ff1400ff', '#ff1300ff', '#ff1200ff', '#ff1100ff', '#ff1000ff', '#ff0f00ff', '#ff0e00ff', '#ff0d00ff', '#ff0c00ff', '#ff0b00ff', '#ff0a00ff', '#ff0900ff', '#ff0800ff', '#ff0700ff', '#ff0600ff', '#ff0500ff', '#ff0400ff', '#ff0300ff', '#ff0200ff', '#ff0100ff', '#ff0000ff', '#ff0000ff']);
+    
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.x = d3.scale.linear()
+              .domain([30.0, 201.5714285714283])
+              .range([0, 450 - 50]);
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.legend = L.control({position: 'topright'});
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.legend.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.xAxis = d3.svg.axis()
+        .scale(color_map_5df4d4b718f327ae22d8f7ad2be39fb5.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([30.0, 87.19047619047609, 144.38095238095218, 201.5714285714283]);
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.g = color_map_5df4d4b718f327ae22d8f7ad2be39fb5.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.g.selectAll("rect")
+        .data(color_map_5df4d4b718f327ae22d8f7ad2be39fb5.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_5df4d4b718f327ae22d8f7ad2be39fb5.x(color_map_5df4d4b718f327ae22d8f7ad2be39fb5.color.domain()[i - 1]) : color_map_5df4d4b718f327ae22d8f7ad2be39fb5.x.range()[0],
+            x1: i < color_map_5df4d4b718f327ae22d8f7ad2be39fb5.color.domain().length ? color_map_5df4d4b718f327ae22d8f7ad2be39fb5.x(color_map_5df4d4b718f327ae22d8f7ad2be39fb5.color.domain()[i]) : color_map_5df4d4b718f327ae22d8f7ad2be39fb5.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_5df4d4b718f327ae22d8f7ad2be39fb5.g.call(color_map_5df4d4b718f327ae22d8f7ad2be39fb5.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("Current CO Quantities (tonnes/year)");
+    
+            tile_layer_4f5a00208433c02d01bba3d0f3531e0c.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+                marker_2eea9519945a9b05d8c0e355aac810ac.setIcon(icon_342e8af68df57ea21f1c1591f80dcbfa);
+            
+    
+                marker_12fc6f2aa63bbc4bfb63772b51a58223.setIcon(icon_ca9746df5fbd1a28261db3df7f0e9094);
+            
+    
+                marker_878ef52afc06621f45bf4badc20e654a.setIcon(icon_6a4ddf3156b6ea0476ff380d053f7e3f);
+            
+    
+                marker_f4e83f2388e30ae4d9b0df98115120e0.setIcon(icon_bf5d66f0a462f0c43bb0f77126487131);
+            
+    
+                marker_b0f7c448dbb7eeca71a0a7889702cd2e.setIcon(icon_f2827712fe3956f0cf61193db959a19c);
+            
+    
+                marker_e584fc5f1572580b45374b87bc5b7176.setIcon(icon_ac73a81d13d575be5f00c4f6c0c8ede2);
+            
+    
+                marker_2cb9ba036c5fe2b11be81577d747b0e5.setIcon(icon_c6f34dc0c744106a078741add32d6f8d);
+            
+    
+                marker_327fbe3e6c7045ac6b53241bb747fd62.setIcon(icon_658ba4ec9fe35dc948f3fe75f88cb696);
+            
+    
+                marker_68055d5081d7d828e33c8780e8659ac1.setIcon(icon_230399e56cd0a101634f30ea38a1fb56);
+            
+    
+            marker_cluster_d4b3bdac87f305cc591b5513dd9e1210.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            var marker_cluster_2e56b37e28c05f1551069de9a564a5c9 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_b2994fa2b2e95959210f832ec6693837 = L.circleMarker(
+                [45.53508794, -73.65485832],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#910091ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_41c363b08e09b55ab1352967a4fae2fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_166330928c3835159cf9e6464a557a39 = $(`<div id="html_166330928c3835159cf9e6464a557a39" style="width: 100.0%; height: 100.0%;">     <strong>Mycelium Remédium</strong><br>     Current CO: 80.00 tonnes/year<br>     Predicted CO (2050): 94.86 tonnes/year<br>     Increase: 14.86 tonnes/year      (18.57%)     </div>`)[0];
+                popup_41c363b08e09b55ab1352967a4fae2fa.setContent(html_166330928c3835159cf9e6464a557a39);
+            
+        
+
+        circle_marker_b2994fa2b2e95959210f832ec6693837.bindPopup(popup_41c363b08e09b55ab1352967a4fae2fa)
+        ;
+
+        
+    
+    
+            circle_marker_b2994fa2b2e95959210f832ec6693837.bindTooltip(
+                `<div>
+                     Mycelium Remédium: 94.86 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c3c24960cd41266eb647ad8be0644fc2 = L.circleMarker(
+                [45.539989, -73.550842],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4100beff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_c7e5a0164318cf7693cddb881a42cd2f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_693795cca6336b6df1bd2b2d4da199d3 = $(`<div id="html_693795cca6336b6df1bd2b2d4da199d3" style="width: 100.0%; height: 100.0%;">     <strong>Blanc de Gris</strong><br>     Current CO: 50.00 tonnes/year<br>     Predicted CO (2050): 59.29 tonnes/year<br>     Increase: 9.29 tonnes/year      (18.57%)     </div>`)[0];
+                popup_c7e5a0164318cf7693cddb881a42cd2f.setContent(html_693795cca6336b6df1bd2b2d4da199d3);
+            
+        
+
+        circle_marker_c3c24960cd41266eb647ad8be0644fc2.bindPopup(popup_c7e5a0164318cf7693cddb881a42cd2f)
+        ;
+
+        
+    
+    
+            circle_marker_c3c24960cd41266eb647ad8be0644fc2.bindTooltip(
+                `<div>
+                     Blanc de Gris: 59.29 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9970da3445d52f0021023468954182f6 = L.circleMarker(
+                [45.54253893, -73.62951757],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb00fbff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_f59247e58b05d4e0cf6c641216542e24 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ff5fc228c24a1f73ee499199ae33190f = $(`<div id="html_ff5fc228c24a1f73ee499199ae33190f" style="width: 100.0%; height: 100.0%;">     <strong>ETOH</strong><br>     Current CO: 120.00 tonnes/year<br>     Predicted CO (2050): 142.29 tonnes/year<br>     Increase: 22.29 tonnes/year      (18.57%)     </div>`)[0];
+                popup_f59247e58b05d4e0cf6c641216542e24.setContent(html_ff5fc228c24a1f73ee499199ae33190f);
+            
+        
+
+        circle_marker_9970da3445d52f0021023468954182f6.bindPopup(popup_f59247e58b05d4e0cf6c641216542e24)
+        ;
+
+        
+    
+    
+            circle_marker_9970da3445d52f0021023468954182f6.bindTooltip(
+                `<div>
+                     ETOH: 142.29 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aa6cecf8c52074b5c423d1a2b88fc9d0 = L.circleMarker(
+                [45.207945, -72.747009],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c600c6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_76d7929e42295021238cf77106832585 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_23c0d1757d27377abc746323e4664fb6 = $(`<div id="html_23c0d1757d27377abc746323e4664fb6" style="width: 100.0%; height: 100.0%;">     <strong>Brome Composte Inc</strong><br>     Current CO: 100.00 tonnes/year<br>     Predicted CO (2050): 118.57 tonnes/year<br>     Increase: 18.57 tonnes/year      (18.57%)     </div>`)[0];
+                popup_76d7929e42295021238cf77106832585.setContent(html_23c0d1757d27377abc746323e4664fb6);
+            
+        
+
+        circle_marker_aa6cecf8c52074b5c423d1a2b88fc9d0.bindPopup(popup_76d7929e42295021238cf77106832585)
+        ;
+
+        
+    
+    
+            circle_marker_aa6cecf8c52074b5c423d1a2b88fc9d0.bindTooltip(
+                `<div>
+                     Brome Composte Inc: 118.57 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_afda34602d73bdc1cc97b559f543fc24 = L.circleMarker(
+                [45.50228716, -73.57063324],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d3009fff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_9e88faaaef4a2803611ed3bf21e9bb54 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b20e0bf28036d953e09b9ec010a517b2 = $(`<div id="html_b20e0bf28036d953e09b9ec010a517b2" style="width: 100.0%; height: 100.0%;">     <strong>3 Brasseurs</strong><br>     Current CO: 140.00 tonnes/year<br>     Predicted CO (2050): 166.00 tonnes/year<br>     Increase: 26.00 tonnes/year      (18.57%)     </div>`)[0];
+                popup_9e88faaaef4a2803611ed3bf21e9bb54.setContent(html_b20e0bf28036d953e09b9ec010a517b2);
+            
+        
+
+        circle_marker_afda34602d73bdc1cc97b559f543fc24.bindPopup(popup_9e88faaaef4a2803611ed3bf21e9bb54)
+        ;
+
+        
+    
+    
+            circle_marker_afda34602d73bdc1cc97b559f543fc24.bindTooltip(
+                `<div>
+                     3 Brasseurs: 166.00 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2de0a37d6cda155871173a805921b4a0 = L.circleMarker(
+                [45.62641864, -73.55343656],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5c00a4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_c9543bdba66eefc47226a7de68bc7521 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_955f4237c866540697096bd2f29f6558 = $(`<div id="html_955f4237c866540697096bd2f29f6558" style="width: 100.0%; height: 100.0%;">     <strong>Loop</strong><br>     Current CO: 60.00 tonnes/year<br>     Predicted CO (2050): 71.14 tonnes/year<br>     Increase: 11.14 tonnes/year      (18.57%)     </div>`)[0];
+                popup_c9543bdba66eefc47226a7de68bc7521.setContent(html_955f4237c866540697096bd2f29f6558);
+            
+        
+
+        circle_marker_2de0a37d6cda155871173a805921b4a0.bindPopup(popup_c9543bdba66eefc47226a7de68bc7521)
+        ;
+
+        
+    
+    
+            circle_marker_2de0a37d6cda155871173a805921b4a0.bindTooltip(
+                `<div>
+                     Loop: 71.14 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8e0885c2b63e90f100831540dc278b23 = L.circleMarker(
+                [45.23377514, -72.8554642],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8b0000ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_1080aea280cca341542667fcf479d4db = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af8c8a708c0778f65ff92c1d593d7b5f = $(`<div id="html_af8c8a708c0778f65ff92c1d593d7b5f" style="width: 100.0%; height: 100.0%;">     <strong>Vignoble de la Bauge</strong><br>     Current CO: 170.00 tonnes/year<br>     Predicted CO (2050): 201.57 tonnes/year<br>     Increase: 31.57 tonnes/year      (18.57%)     </div>`)[0];
+                popup_1080aea280cca341542667fcf479d4db.setContent(html_af8c8a708c0778f65ff92c1d593d7b5f);
+            
+        
+
+        circle_marker_8e0885c2b63e90f100831540dc278b23.bindPopup(popup_1080aea280cca341542667fcf479d4db)
+        ;
+
+        
+    
+    
+            circle_marker_8e0885c2b63e90f100831540dc278b23.bindTooltip(
+                `<div>
+                     Vignoble de la Bauge: 201.57 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_330f9188759fa6bafeb6d4a5ddc5084a = L.circleMarker(
+                [45.5266671, -73.5958877],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0c00f3ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_367a8913276cc30ea0a5e8568df6fee7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b9b0e00d4c87951ad1adcb84a44b8bf4 = $(`<div id="html_b9b0e00d4c87951ad1adcb84a44b8bf4" style="width: 100.0%; height: 100.0%;">     <strong>Stillgood</strong><br>     Current CO: 30.00 tonnes/year<br>     Predicted CO (2050): 35.57 tonnes/year<br>     Increase: 5.57 tonnes/year      (18.57%)     </div>`)[0];
+                popup_367a8913276cc30ea0a5e8568df6fee7.setContent(html_b9b0e00d4c87951ad1adcb84a44b8bf4);
+            
+        
+
+        circle_marker_330f9188759fa6bafeb6d4a5ddc5084a.bindPopup(popup_367a8913276cc30ea0a5e8568df6fee7)
+        ;
+
+        
+    
+    
+            circle_marker_330f9188759fa6bafeb6d4a5ddc5084a.bindTooltip(
+                `<div>
+                     Stillgood: 35.57 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a8202375b7eb0ff3e93558fda38e4692 = L.circleMarker(
+                [45.53141631, -73.6543733],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ac00acff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 1}
+            ).addTo(marker_cluster_2e56b37e28c05f1551069de9a564a5c9);
+        
+    
+        var popup_3309b7de8035c1d1db23c0e0a2c75c3b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e54d09b2bdd0d511d2f78b6e74dacc2 = $(`<div id="html_5e54d09b2bdd0d511d2f78b6e74dacc2" style="width: 100.0%; height: 100.0%;">     <strong>Tricycle</strong><br>     Current CO: 90.00 tonnes/year<br>     Predicted CO (2050): 106.71 tonnes/year<br>     Increase: 16.71 tonnes/year      (18.57%)     </div>`)[0];
+                popup_3309b7de8035c1d1db23c0e0a2c75c3b.setContent(html_5e54d09b2bdd0d511d2f78b6e74dacc2);
+            
+        
+
+        circle_marker_a8202375b7eb0ff3e93558fda38e4692.bindPopup(popup_3309b7de8035c1d1db23c0e0a2c75c3b)
+        ;
+
+        
+    
+    
+            circle_marker_a8202375b7eb0ff3e93558fda38e4692.bindTooltip(
+                `<div>
+                     Tricycle: 106.71 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            marker_cluster_2e56b37e28c05f1551069de9a564a5c9.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+    var color_map_cbd30c4d1816c6262bdc3973e2147eb2 = {};
+
+    
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.color = d3.scale.threshold()
+              .domain([30.0, 30.343830518179214, 30.68766103635843, 31.031491554537645, 31.37532207271686, 31.719152590896076, 32.06298310907529, 32.40681362725451, 32.75064414543372, 33.094474663612935, 33.43830518179215, 33.78213569997136, 34.12596621815058, 34.4697967363298, 34.81362725450901, 35.157457772688225, 35.50128829086744, 35.84511880904665, 36.18894932722587, 36.53277984540509, 36.8766103635843, 37.220440881763516, 37.56427139994273, 37.90810191812194, 38.25193243630116, 38.59576295448038, 38.93959347265959, 39.283423990838806, 39.62725450901802, 39.97108502719723, 40.31491554537645, 40.65874606355567, 41.00257658173488, 41.346407099914096, 41.69023761809331, 42.03406813627252, 42.37789865445174, 42.72172917263096, 43.06555969081017, 43.409390208989386, 43.7532207271686, 44.097051245347814, 44.44088176352703, 44.78471228170625, 45.12854279988546, 45.472373318064676, 45.81620383624389, 46.160034354423104, 46.50386487260232, 46.84769539078154, 47.191525908960756, 47.53535642713997, 47.87918694531918, 48.223017463498394, 48.56684798167761, 48.91067849985683, 49.254509018036046, 49.598339536215256, 49.94217005439447, 50.286000572573684, 50.6298310907529, 50.97366160893212, 51.317492127111336, 51.661322645290554, 52.00515316346976, 52.348983681648974, 52.69281419982819, 53.03664471800741, 53.380475236186626, 53.72430575436584, 54.068136272545054, 54.411966790724264, 54.75579730890348, 55.0996278270827, 55.44345834526192, 55.78728886344113, 56.13111938162034, 56.474949899799554, 56.81878041797877, 57.16261093615799, 57.50644145433721, 57.85027197251642, 58.194102490695634, 58.537933008874845, 58.88176352705406, 59.22559404523328, 59.56942456341249, 59.91325508159171, 60.25708559977092, 60.600916117950135, 60.94474663612935, 61.28857715430857, 61.63240767248779, 61.976238190667, 62.320068708846215, 62.663899227025425, 63.00772974520464, 63.35156026338385, 63.69539078156308, 64.03922129974228, 64.38305181792151, 64.72688233610072, 65.07071285427995, 65.41454337245915, 65.75837389063835, 66.10220440881758, 66.44603492699679, 66.78986544517602, 67.13369596335522, 67.47752648153444, 67.82135699971366, 68.16518751789286, 68.50901803607209, 68.8528485542513, 69.19667907243051, 69.54050959060973, 69.88434010878893, 70.22817062696816, 70.57200114514737, 70.91583166332659, 71.2596621815058, 71.60349269968502, 71.94732321786424, 72.29115373604344, 72.63498425422267, 72.97881477240188, 73.32264529058111, 73.66647580876031, 74.01030632693951, 74.35413684511875, 74.69796736329795, 75.04179788147718, 75.38562839965638, 75.7294589178356, 76.07328943601482, 76.41711995419402, 76.76095047237325, 77.10478099055246, 77.44861150873167, 77.79244202691089, 78.13627254509011, 78.48010306326933, 78.82393358144853, 79.16776409962775, 79.51159461780696, 79.85542513598618, 80.1992556541654, 80.5430861723446, 80.88691669052383, 81.23074720870304, 81.57457772688225, 81.91840824506147, 82.26223876324067, 82.6060692814199, 82.94989979959911, 83.29373031777834, 83.63756083595754, 83.98139135413676, 84.32522187231598, 84.6690523904952, 85.01288290867441, 85.35671342685362, 85.70054394503283, 86.04437446321205, 86.38820498139127, 86.73203549957049, 87.07586601774969, 87.4196965359289, 87.76352705410812, 88.10735757228734, 88.45118809046656, 88.79501860864576, 89.13884912682498, 89.4826796450042, 89.82651016318341, 90.17034068136263, 90.51417119954183, 90.85800171772107, 91.20183223590027, 91.5456627540795, 91.8894932722587, 92.23332379043792, 92.57715430861714, 92.92098482679636, 93.26481534497557, 93.60864586315478, 93.952476381334, 94.29630689951321, 94.64013741769243, 94.98396793587165, 95.32779845405085, 95.67162897223007, 96.01545949040928, 96.3592900085885, 96.7031205267677, 97.04695104494694, 97.39078156312615, 97.73461208130536, 98.07844259948457, 98.42227311766379, 98.76610363584301, 99.10993415402221, 99.45376467220143, 99.79759519038065, 100.14142570855988, 100.48525622673908, 100.8290867449183, 101.17291726309752, 101.51674778127672, 101.86057829945594, 102.20440881763516, 102.54823933581437, 102.89206985399358, 103.2359003721728, 103.57973089035202, 103.92356140853124, 104.26739192671045, 104.61122244488966, 104.95505296306888, 105.29888348124808, 105.6427139994273, 105.98654451760652, 106.33037503578574, 106.67420555396495, 107.01803607214417, 107.36186659032339, 107.7056971085026, 108.04952762668181, 108.39335814486103, 108.73718866304024, 109.08101918121945, 109.42484969939866, 109.76868021757788, 110.11251073575711, 110.45634125393632, 110.80017177211553, 111.14400229029475, 111.48783280847397, 111.83166332665317, 112.17549384483239, 112.5193243630116, 112.86315488119081, 113.20698539937004, 113.55081591754926, 113.89464643572848, 114.23847695390768, 114.5823074720869, 114.92613799026611, 115.26996850844533, 115.61379902662453, 115.95762954480375, 116.30146006298297, 116.6452905811622, 116.9891210993414, 117.33295161752062, 117.67678213569984, 118.02061265387904, 118.36444317205826, 118.70827369023748, 119.0521042084167, 119.3959347265959, 119.73976524477513, 120.08359576295435, 120.42742628113356, 120.77125679931277, 121.11508731749198, 121.4589178356712, 121.8027483538504, 122.14657887202962, 122.49040939020884, 122.83423990838806, 123.17807042656727, 123.52190094474649, 123.86573146292571, 124.20956198110493, 124.55339249928413, 124.89722301746335, 125.24105353564256, 125.58488405382177, 125.92871457200098, 126.27254509018022, 126.61637560835943, 126.96020612653864, 127.30403664471785, 127.64786716289707, 127.99169768107629, 128.3355281992555, 128.6793587174347, 129.02318923561393, 129.36701975379313, 129.71085027197236, 130.05468079015156, 130.3985113083308, 130.74234182651, 131.0861723446892, 131.43000286286843, 131.77383338104767, 132.11766389922684, 132.46149441740607, 132.8053249355853, 133.1491554537645, 133.4929859719437, 133.83681649012294, 134.18064700830217, 134.52447752648135, 134.86830804466058, 135.2121385628398, 135.55596908101901, 135.89979959919822, 136.24363011737745, 136.58746063555668, 136.93129115373586, 137.2751216719151, 137.61895219009432, 137.96278270827352, 138.30661322645273, 138.65044374463196, 138.99427426281116, 139.3381047809904, 139.6819352991696, 140.02576581734883, 140.36959633552803, 140.71342685370723, 141.05725737188646, 141.40108789006567, 141.74491840824487, 142.0887489264241, 142.4325794446033, 142.77640996278254, 143.12024048096174, 143.46407099914097, 143.80790151732018, 144.15173203549938, 144.4955625536786, 144.8393930718578, 145.18322359003702, 145.52705410821625, 145.87088462639548, 146.21471514457468, 146.5585456627539, 146.90237618093312, 147.24620669911232, 147.59003721729152, 147.93386773547076, 148.27769825364996, 148.62152877182916, 148.9653592900084, 149.30918980818763, 149.65302032636683, 149.99685084454603, 150.34068136272526, 150.6845118809045, 151.02834239908367, 151.3721729172629, 151.71600343544213, 152.0598339536213, 152.40366447180054, 152.74749498997977, 153.091325508159, 153.43515602633818, 153.7789865445174, 154.12281706269664, 154.46664758087584, 154.81047809905505, 155.15430861723428, 155.49813913541348, 155.8419696535927, 156.18580017177192, 156.52963068995115, 156.87346120813035, 157.21729172630955, 157.56112224448879, 157.904952762668, 158.2487832808472, 158.59261379902642, 158.93644431720566, 159.28027483538486, 159.62410535356406, 159.9679358717433, 160.3117663899225, 160.6555969081017, 160.99942742628093, 161.34325794446013, 161.68708846263937, 162.03091898081857, 162.3747494989978, 162.718580017177, 163.0624105353562, 163.4062410535354, 163.75007157171464, 164.09390208989387, 164.43773260807308, 164.7815631262523, 165.1253936444315, 165.46922416261071, 165.81305468078992, 166.15688519896915, 166.50071571714835, 166.84454623532758, 167.18837675350682, 167.53220727168602, 167.87603778986525, 168.21986830804443, 168.56369882622366, 168.90752934440286, 169.2513598625821, 169.5951903807613, 169.93902089894053, 170.28285141711976, 170.62668193529893, 170.97051245347816, 171.31434297165737, 171.6581734898366, 172.0020040080158, 172.34583452619503, 172.68966504437424, 173.03349556255344, 173.37732608073264, 173.72115659891188, 174.0649871170911, 174.4088176352703, 174.75264815344954, 175.09647867162874, 175.44030918980798, 175.78413970798715, 176.12797022616638, 176.4718007443456, 176.81563126252482, 177.15946178070405, 177.50329229888325, 177.84712281706248, 178.19095333524166, 178.5347838534209, 178.8786143716001, 179.22244488977933, 179.56627540795853, 179.91010592613776, 180.253936444317, 180.59776696249617, 180.9415974806754, 181.2854279988546, 181.62925851703383, 181.97308903521304, 182.31691955339227, 182.66075007157147, 183.0045805897507, 183.3484111079299, 183.6922416261091, 184.03607214428834, 184.37990266246754, 184.72373318064678, 185.06756369882598, 185.4113942170052, 185.75522473518438, 186.09905525336362, 186.44288577154282, 186.78671628972205, 187.13054680790128, 187.47437732608049, 187.81820784425972, 188.1620383624389, 188.50586888061812, 188.84969939879733, 189.19352991697656, 189.53736043515576, 189.881190953335, 190.22502147151422, 190.56885198969343, 190.91268250787263, 191.25651302605183, 191.60034354423107, 191.94417406241027, 192.2880045805895, 192.6318350987687, 192.97566561694794, 193.31949613512714, 193.66332665330634, 194.00715717148557, 194.35098768966478, 194.694818207844, 195.0386487260232, 195.38247924420244, 195.72630976238162, 196.07014028056085, 196.41397079874008, 196.75780131691928, 197.10163183509852, 197.44546235327772, 197.78929287145695, 198.13312338963615, 198.47695390781536, 198.82078442599456, 199.1646149441738, 199.508445462353, 199.85227598053223, 200.19610649871146, 200.53993701689066, 200.88376753506986, 201.22759805324907, 201.5714285714283])
+              .range(['#0000ffff', '#0000ffff', '#0100feff', '#0200fdff', '#0300fcff', '#0300fcff', '#0400fbff', '#0500faff', '#0600f9ff', '#0600f9ff', '#0700f8ff', '#0800f7ff', '#0900f6ff', '#0a00f6ff', '#0a00f5ff', '#0b00f4ff', '#0c00f3ff', '#0d00f2ff', '#0d00f2ff', '#0e00f1ff', '#0f00f0ff', '#1000efff', '#1000efff', '#1100eeff', '#1200edff', '#1300ecff', '#1400ecff', '#1400ebff', '#1500eaff', '#1600e9ff', '#1700e9ff', '#1700e8ff', '#1800e7ff', '#1900e6ff', '#1a00e5ff', '#1b00e5ff', '#1b00e4ff', '#1c00e3ff', '#1d00e2ff', '#1e00e2ff', '#1e00e1ff', '#1f00e0ff', '#2000dfff', '#2100dfff', '#2100deff', '#2200ddff', '#2300dcff', '#2400dbff', '#2500dbff', '#2500daff', '#2600d9ff', '#2700d8ff', '#2800d8ff', '#2800d7ff', '#2900d6ff', '#2a00d5ff', '#2b00d5ff', '#2c00d4ff', '#2c00d3ff', '#2d00d2ff', '#2e00d2ff', '#2f00d1ff', '#2f00d0ff', '#3000cfff', '#3100ceff', '#3200ceff', '#3200cdff', '#3300ccff', '#3400cbff', '#3500cbff', '#3600caff', '#3600c9ff', '#3700c8ff', '#3800c8ff', '#3900c7ff', '#3900c6ff', '#3a00c5ff', '#3b00c4ff', '#3c00c4ff', '#3d00c3ff', '#3d00c2ff', '#3e00c1ff', '#3f00c1ff', '#4000c0ff', '#4000bfff', '#4100beff', '#4200beff', '#4300bdff', '#4300bcff', '#4400bbff', '#4500bbff', '#4600baff', '#4700b9ff', '#4700b8ff', '#4800b7ff', '#4900b7ff', '#4a00b6ff', '#4a00b5ff', '#4b00b4ff', '#4c00b4ff', '#4d00b3ff', '#4e00b2ff', '#4e00b1ff', '#4f00b1ff', '#5000b0ff', '#5100afff', '#5100aeff', '#5200adff', '#5300adff', '#5400acff', '#5400abff', '#5500aaff', '#5600aaff', '#5700a9ff', '#5800a8ff', '#5800a7ff', '#5900a7ff', '#5a00a6ff', '#5b00a5ff', '#5b00a4ff', '#5c00a4ff', '#5d00a3ff', '#5e00a2ff', '#5f00a1ff', '#5f00a0ff', '#6000a0ff', '#61009fff', '#62009eff', '#62009dff', '#63009dff', '#64009cff', '#65009bff', '#65009aff', '#66009aff', '#670099ff', '#680098ff', '#690097ff', '#690096ff', '#6a0096ff', '#6b0095ff', '#6c0094ff', '#6c0093ff', '#6d0093ff', '#6e0092ff', '#6f0091ff', '#700090ff', '#700090ff', '#71008fff', '#72008eff', '#73008dff', '#73008dff', '#74008cff', '#75008bff', '#76008aff', '#760089ff', '#770089ff', '#780088ff', '#790087ff', '#7a0086ff', '#7a0086ff', '#7b0085ff', '#7c0084ff', '#7d0083ff', '#7d0083ff', '#7e0082ff', '#7f0081ff', '#800080ff', '#810081ff', '#810081ff', '#820082ff', '#830083ff', '#840084ff', '#840084ff', '#850085ff', '#860086ff', '#870087ff', '#870087ff', '#880088ff', '#890089ff', '#8a008aff', '#8a008aff', '#8b008bff', '#8c008cff', '#8d008dff', '#8e008eff', '#8e008eff', '#8f008fff', '#900090ff', '#910091ff', '#910091ff', '#920092ff', '#930093ff', '#940094ff', '#940094ff', '#950095ff', '#960096ff', '#970097ff', '#980098ff', '#980098ff', '#990099ff', '#9a009aff', '#9b009bff', '#9b009bff', '#9c009cff', '#9d009dff', '#9e009eff', '#9e009eff', '#9f009fff', '#a000a0ff', '#a100a1ff', '#a100a1ff', '#a200a2ff', '#a300a3ff', '#a400a4ff', '#a500a5ff', '#a500a5ff', '#a600a6ff', '#a700a7ff', '#a800a8ff', '#a800a8ff', '#a900a9ff', '#aa00aaff', '#ab00abff', '#ab00abff', '#ac00acff', '#ad00adff', '#ae00aeff', '#af00afff', '#af00afff', '#b000b0ff', '#b100b1ff', '#b200b2ff', '#b200b2ff', '#b300b3ff', '#b400b4ff', '#b500b5ff', '#b500b5ff', '#b600b6ff', '#b700b7ff', '#b800b8ff', '#b800b8ff', '#b900b9ff', '#ba00baff', '#bb00bbff', '#bc00bcff', '#bc00bcff', '#bd00bdff', '#be00beff', '#bf00bfff', '#bf00bfff', '#c000c0ff', '#c100c1ff', '#c200c2ff', '#c200c2ff', '#c300c3ff', '#c400c4ff', '#c500c5ff', '#c500c5ff', '#c600c6ff', '#c700c7ff', '#c800c8ff', '#c900c9ff', '#c900c9ff', '#ca00caff', '#cb00cbff', '#cc00ccff', '#cc00ccff', '#cd00cdff', '#ce00ceff', '#cf00cfff', '#cf00cfff', '#d000d0ff', '#d100d1ff', '#d200d2ff', '#d300d3ff', '#d300d3ff', '#d400d4ff', '#d500d5ff', '#d600d6ff', '#d600d6ff', '#d700d7ff', '#d800d8ff', '#d900d9ff', '#d900d9ff', '#da00daff', '#db00dbff', '#dc00dcff', '#dc00dcff', '#dd00ddff', '#de00deff', '#df00dfff', '#e000e0ff', '#e000e0ff', '#e100e1ff', '#e200e2ff', '#e300e3ff', '#e300e3ff', '#e400e4ff', '#e500e5ff', '#e600e6ff', '#e600e6ff', '#e700e7ff', '#e800e8ff', '#e900e9ff', '#ea00eaff', '#ea00eaff', '#eb00ebff', '#ec00ecff', '#ed00edff', '#ed00edff', '#ee00eeff', '#ef00efff', '#f000f0ff', '#f000f0ff', '#f100f1ff', '#f200f2ff', '#f300f3ff', '#f300f3ff', '#f400f4ff', '#f500f5ff', '#f600f6ff', '#f700f7ff', '#f700f7ff', '#f800f8ff', '#f900f9ff', '#fa00faff', '#fa00faff', '#fb00fbff', '#fc00fcff', '#fd00fdff', '#fd00fdff', '#fe00feff', '#ff00ffff', '#ff00ffff', '#ff00fdff', '#fe00fcff', '#fd00faff', '#fc00f9ff', '#fc00f7ff', '#fb00f6ff', '#fa00f4ff', '#fa00f3ff', '#f900f1ff', '#f800f0ff', '#f800eeff', '#f700edff', '#f600ebff', '#f500e9ff', '#f500e8ff', '#f400e6ff', '#f300e5ff', '#f300e3ff', '#f200e2ff', '#f100e0ff', '#f100dfff', '#f000ddff', '#ef00dcff', '#ee00daff', '#ee00d9ff', '#ed00d7ff', '#ec00d5ff', '#ec00d4ff', '#eb00d2ff', '#ea00d1ff', '#ea00cfff', '#e900ceff', '#e800ccff', '#e700cbff', '#e700c9ff', '#e600c8ff', '#e500c6ff', '#e500c5ff', '#e400c3ff', '#e300c1ff', '#e300c0ff', '#e200beff', '#e100bdff', '#e000bbff', '#e000baff', '#df00b8ff', '#de00b7ff', '#de00b5ff', '#dd00b4ff', '#dc00b2ff', '#dc00b0ff', '#db00afff', '#da00adff', '#d900acff', '#d900aaff', '#d800a9ff', '#d700a7ff', '#d700a6ff', '#d600a4ff', '#d500a3ff', '#d500a1ff', '#d400a0ff', '#d3009eff', '#d2009cff', '#d2009bff', '#d10099ff', '#d00098ff', '#d00096ff', '#cf0095ff', '#ce0093ff', '#ce0092ff', '#cd0090ff', '#cc008fff', '#cb008dff', '#cb008cff', '#ca008aff', '#c90088ff', '#c90087ff', '#c80085ff', '#c70084ff', '#c70082ff', '#c60081ff', '#c5007fff', '#c4007eff', '#c4007cff', '#c3007bff', '#c20079ff', '#c20078ff', '#c10076ff', '#c00074ff', '#c00073ff', '#bf0071ff', '#be0070ff', '#bd006eff', '#bd006dff', '#bc006bff', '#bb006aff', '#bb0068ff', '#ba0067ff', '#b90065ff', '#b90064ff', '#b80062ff', '#b70060ff', '#b6005fff', '#b6005dff', '#b5005cff', '#b4005aff', '#b40059ff', '#b30057ff', '#b20056ff', '#b20054ff', '#b10053ff', '#b00051ff', '#af0050ff', '#af004eff', '#ae004cff', '#ad004bff', '#ad0049ff', '#ac0048ff', '#ab0046ff', '#ab0045ff', '#aa0043ff', '#a90042ff', '#a80040ff', '#a8003fff', '#a7003dff', '#a6003cff', '#a6003aff', '#a50038ff', '#a40037ff', '#a40035ff', '#a30034ff', '#a20032ff', '#a10031ff', '#a1002fff', '#a0002eff', '#9f002cff', '#9f002bff', '#9e0029ff', '#9d0028ff', '#9d0026ff', '#9c0024ff', '#9b0023ff', '#9a0021ff', '#9a0020ff', '#99001eff', '#98001dff', '#98001bff', '#97001aff', '#960018ff', '#960017ff', '#950015ff', '#940014ff', '#930012ff', '#930010ff', '#92000fff', '#91000dff', '#91000cff', '#90000aff', '#8f0009ff', '#8f0007ff', '#8e0006ff', '#8d0004ff', '#8c0003ff', '#8c0001ff', '#8b0000ff']);
+    
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.x = d3.scale.linear()
+              .domain([30.0, 201.5714285714283])
+              .range([0, 450 - 50]);
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.legend = L.control({position: 'topright'});
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.legend.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.xAxis = d3.svg.axis()
+        .scale(color_map_cbd30c4d1816c6262bdc3973e2147eb2.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([30.0, 87.19047619047609, 144.38095238095218, 201.5714285714283]);
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.g = color_map_cbd30c4d1816c6262bdc3973e2147eb2.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.g.selectAll("rect")
+        .data(color_map_cbd30c4d1816c6262bdc3973e2147eb2.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_cbd30c4d1816c6262bdc3973e2147eb2.x(color_map_cbd30c4d1816c6262bdc3973e2147eb2.color.domain()[i - 1]) : color_map_cbd30c4d1816c6262bdc3973e2147eb2.x.range()[0],
+            x1: i < color_map_cbd30c4d1816c6262bdc3973e2147eb2.color.domain().length ? color_map_cbd30c4d1816c6262bdc3973e2147eb2.x(color_map_cbd30c4d1816c6262bdc3973e2147eb2.color.domain()[i]) : color_map_cbd30c4d1816c6262bdc3973e2147eb2.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_cbd30c4d1816c6262bdc3973e2147eb2.g.call(color_map_cbd30c4d1816c6262bdc3973e2147eb2.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("Predicted CO Quantities in 2050 (tonnes/year)");
+    
+            tile_layer_4f5a00208433c02d01bba3d0f3531e0c.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+                marker_2eea9519945a9b05d8c0e355aac810ac.setIcon(icon_342e8af68df57ea21f1c1591f80dcbfa);
+            
+    
+                marker_12fc6f2aa63bbc4bfb63772b51a58223.setIcon(icon_ca9746df5fbd1a28261db3df7f0e9094);
+            
+    
+                marker_878ef52afc06621f45bf4badc20e654a.setIcon(icon_6a4ddf3156b6ea0476ff380d053f7e3f);
+            
+    
+                marker_f4e83f2388e30ae4d9b0df98115120e0.setIcon(icon_bf5d66f0a462f0c43bb0f77126487131);
+            
+    
+                marker_b0f7c448dbb7eeca71a0a7889702cd2e.setIcon(icon_f2827712fe3956f0cf61193db959a19c);
+            
+    
+                marker_e584fc5f1572580b45374b87bc5b7176.setIcon(icon_ac73a81d13d575be5f00c4f6c0c8ede2);
+            
+    
+                marker_2cb9ba036c5fe2b11be81577d747b0e5.setIcon(icon_c6f34dc0c744106a078741add32d6f8d);
+            
+    
+                marker_327fbe3e6c7045ac6b53241bb747fd62.setIcon(icon_658ba4ec9fe35dc948f3fe75f88cb696);
+            
+    
+                marker_68055d5081d7d828e33c8780e8659ac1.setIcon(icon_230399e56cd0a101634f30ea38a1fb56);
+            
+    
+            marker_cluster_d4b3bdac87f305cc591b5513dd9e1210.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            marker_cluster_2e56b37e28c05f1551069de9a564a5c9.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            var heat_map_7cd1adb4b707df61cd527f2c00c20daf = L.heatLayer(
+                [[45.53508794, -73.65485832, 94.85714285714273], [45.539989, -73.550842, 59.28571428571421], [45.54253893, -73.62951757, 142.2857142857141], [45.207945, -72.747009, 118.57142857142841], [45.50228716, -73.57063324, 165.99999999999977], [45.62641864, -73.55343656, 71.14285714285705], [45.23377514, -72.8554642, 201.5714285714283], [45.5266671, -73.5958877, 35.57142857142853], [45.53141631, -73.6543733, 106.71428571428558]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 25,
+  "blur": 15,
+}
+            );
+        
+    
+            heat_map_7cd1adb4b707df61cd527f2c00c20daf.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            var circle_bd08dbcb69799776a93f4c60a161a77b = L.circle(
+                [45.53508794, -73.65485832],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 800, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_98d4cdf226fe96ab8e6bb228672a5f9e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_643462d7938db53998058829aecf1a65 = $(`<div id="html_643462d7938db53998058829aecf1a65" style="width: 100.0%; height: 100.0%;">Mycelium Remédium<br>Current: 80 tonnes/year</div>`)[0];
+                popup_98d4cdf226fe96ab8e6bb228672a5f9e.setContent(html_643462d7938db53998058829aecf1a65);
+            
+        
+
+        circle_bd08dbcb69799776a93f4c60a161a77b.bindPopup(popup_98d4cdf226fe96ab8e6bb228672a5f9e)
+        ;
+
+        
+    
+    
+            circle_bd08dbcb69799776a93f4c60a161a77b.bindTooltip(
+                `<div>
+                     Mycelium Remédium: Current CO 80 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_6bad5dcea81755c35608d0d314d3ea67 = L.circle(
+                [45.53508794, -73.65485832],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 948.5714285714273, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_13bef95efb13a182dc3c8239b5c53b32 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_57326f28cc541a4f38ed04bca66851d6 = $(`<div id="html_57326f28cc541a4f38ed04bca66851d6" style="width: 100.0%; height: 100.0%;">Mycelium Remédium<br>Predicted (2050): 94.86 tonnes/year</div>`)[0];
+                popup_13bef95efb13a182dc3c8239b5c53b32.setContent(html_57326f28cc541a4f38ed04bca66851d6);
+            
+        
+
+        circle_6bad5dcea81755c35608d0d314d3ea67.bindPopup(popup_13bef95efb13a182dc3c8239b5c53b32)
+        ;
+
+        
+    
+    
+            circle_6bad5dcea81755c35608d0d314d3ea67.bindTooltip(
+                `<div>
+                     Mycelium Remédium: Predicted CO 94.86 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_43153c76434bf7f2615841d39b0fe5c2 = L.circle(
+                [45.539989, -73.550842],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 500, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_8951ba82dc83614560561ab6336639f1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ccb61fd965af502f51c5c912fa47904 = $(`<div id="html_7ccb61fd965af502f51c5c912fa47904" style="width: 100.0%; height: 100.0%;">Blanc de Gris<br>Current: 50 tonnes/year</div>`)[0];
+                popup_8951ba82dc83614560561ab6336639f1.setContent(html_7ccb61fd965af502f51c5c912fa47904);
+            
+        
+
+        circle_43153c76434bf7f2615841d39b0fe5c2.bindPopup(popup_8951ba82dc83614560561ab6336639f1)
+        ;
+
+        
+    
+    
+            circle_43153c76434bf7f2615841d39b0fe5c2.bindTooltip(
+                `<div>
+                     Blanc de Gris: Current CO 50 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_bb4f655efafe7fe2d22922fc42d40454 = L.circle(
+                [45.539989, -73.550842],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 592.8571428571421, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_0b0d4bf757a408d218ec24bd464f062d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_99e08cf9707e5195d6d3b3caea53b3fc = $(`<div id="html_99e08cf9707e5195d6d3b3caea53b3fc" style="width: 100.0%; height: 100.0%;">Blanc de Gris<br>Predicted (2050): 59.29 tonnes/year</div>`)[0];
+                popup_0b0d4bf757a408d218ec24bd464f062d.setContent(html_99e08cf9707e5195d6d3b3caea53b3fc);
+            
+        
+
+        circle_bb4f655efafe7fe2d22922fc42d40454.bindPopup(popup_0b0d4bf757a408d218ec24bd464f062d)
+        ;
+
+        
+    
+    
+            circle_bb4f655efafe7fe2d22922fc42d40454.bindTooltip(
+                `<div>
+                     Blanc de Gris: Predicted CO 59.29 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_99083bc0d31520fbf962e2fa6d9c3110 = L.circle(
+                [45.54253893, -73.62951757],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1200, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_d4fa355fd7abf39537a828723e4fd1ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_09b44c80dc43878943fa61137e1305a5 = $(`<div id="html_09b44c80dc43878943fa61137e1305a5" style="width: 100.0%; height: 100.0%;">ETOH<br>Current: 120 tonnes/year</div>`)[0];
+                popup_d4fa355fd7abf39537a828723e4fd1ab.setContent(html_09b44c80dc43878943fa61137e1305a5);
+            
+        
+
+        circle_99083bc0d31520fbf962e2fa6d9c3110.bindPopup(popup_d4fa355fd7abf39537a828723e4fd1ab)
+        ;
+
+        
+    
+    
+            circle_99083bc0d31520fbf962e2fa6d9c3110.bindTooltip(
+                `<div>
+                     ETOH: Current CO 120 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_a9373948cacebbd9e9ee170d8fbb1426 = L.circle(
+                [45.54253893, -73.62951757],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1422.857142857141, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_914cdeba867cd47e232387d7ddeecc78 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bfac3ddcd9d9b4ebd2d87f37b25d66d7 = $(`<div id="html_bfac3ddcd9d9b4ebd2d87f37b25d66d7" style="width: 100.0%; height: 100.0%;">ETOH<br>Predicted (2050): 142.29 tonnes/year</div>`)[0];
+                popup_914cdeba867cd47e232387d7ddeecc78.setContent(html_bfac3ddcd9d9b4ebd2d87f37b25d66d7);
+            
+        
+
+        circle_a9373948cacebbd9e9ee170d8fbb1426.bindPopup(popup_914cdeba867cd47e232387d7ddeecc78)
+        ;
+
+        
+    
+    
+            circle_a9373948cacebbd9e9ee170d8fbb1426.bindTooltip(
+                `<div>
+                     ETOH: Predicted CO 142.29 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_fb4611cde5d8550a373fe935337086ee = L.circle(
+                [45.207945, -72.747009],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1000, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_fa61593ba892be83e708907a4b7313a1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bd7f5b9aff21d0a4fcc84f752b944e63 = $(`<div id="html_bd7f5b9aff21d0a4fcc84f752b944e63" style="width: 100.0%; height: 100.0%;">Brome Composte Inc<br>Current: 100 tonnes/year</div>`)[0];
+                popup_fa61593ba892be83e708907a4b7313a1.setContent(html_bd7f5b9aff21d0a4fcc84f752b944e63);
+            
+        
+
+        circle_fb4611cde5d8550a373fe935337086ee.bindPopup(popup_fa61593ba892be83e708907a4b7313a1)
+        ;
+
+        
+    
+    
+            circle_fb4611cde5d8550a373fe935337086ee.bindTooltip(
+                `<div>
+                     Brome Composte Inc: Current CO 100 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_2c1c7ee62de8072acd6a4112c22c5ed8 = L.circle(
+                [45.207945, -72.747009],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1185.7142857142842, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_b59634b00d626fe92ae938a938347714 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_56dfc025f14a64903712baec7a001da8 = $(`<div id="html_56dfc025f14a64903712baec7a001da8" style="width: 100.0%; height: 100.0%;">Brome Composte Inc<br>Predicted (2050): 118.57 tonnes/year</div>`)[0];
+                popup_b59634b00d626fe92ae938a938347714.setContent(html_56dfc025f14a64903712baec7a001da8);
+            
+        
+
+        circle_2c1c7ee62de8072acd6a4112c22c5ed8.bindPopup(popup_b59634b00d626fe92ae938a938347714)
+        ;
+
+        
+    
+    
+            circle_2c1c7ee62de8072acd6a4112c22c5ed8.bindTooltip(
+                `<div>
+                     Brome Composte Inc: Predicted CO 118.57 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e91175043039fe877245e8808b27d9b6 = L.circle(
+                [45.50228716, -73.57063324],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1400, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_493c2698814f088526bb79e404eb5cbb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d74ab3ebcedb4eb803004a936e75ebec = $(`<div id="html_d74ab3ebcedb4eb803004a936e75ebec" style="width: 100.0%; height: 100.0%;">3 Brasseurs<br>Current: 140 tonnes/year</div>`)[0];
+                popup_493c2698814f088526bb79e404eb5cbb.setContent(html_d74ab3ebcedb4eb803004a936e75ebec);
+            
+        
+
+        circle_e91175043039fe877245e8808b27d9b6.bindPopup(popup_493c2698814f088526bb79e404eb5cbb)
+        ;
+
+        
+    
+    
+            circle_e91175043039fe877245e8808b27d9b6.bindTooltip(
+                `<div>
+                     3 Brasseurs: Current CO 140 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_823fb8097a23d90dee2158ee37ac763c = L.circle(
+                [45.50228716, -73.57063324],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1659.9999999999977, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_d8c12484398a6e3382743a6701c60e5b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ca7f003fa3f9904b584f26dcd21200c = $(`<div id="html_7ca7f003fa3f9904b584f26dcd21200c" style="width: 100.0%; height: 100.0%;">3 Brasseurs<br>Predicted (2050): 166.00 tonnes/year</div>`)[0];
+                popup_d8c12484398a6e3382743a6701c60e5b.setContent(html_7ca7f003fa3f9904b584f26dcd21200c);
+            
+        
+
+        circle_823fb8097a23d90dee2158ee37ac763c.bindPopup(popup_d8c12484398a6e3382743a6701c60e5b)
+        ;
+
+        
+    
+    
+            circle_823fb8097a23d90dee2158ee37ac763c.bindTooltip(
+                `<div>
+                     3 Brasseurs: Predicted CO 166.00 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_b726191ae5aaa856a61086ed2c9faad6 = L.circle(
+                [45.62641864, -73.55343656],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 600, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_ea6b6a019475dd58966c99a5f9b0e619 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64cad85e846a402f1f190500aa135ebc = $(`<div id="html_64cad85e846a402f1f190500aa135ebc" style="width: 100.0%; height: 100.0%;">Loop<br>Current: 60 tonnes/year</div>`)[0];
+                popup_ea6b6a019475dd58966c99a5f9b0e619.setContent(html_64cad85e846a402f1f190500aa135ebc);
+            
+        
+
+        circle_b726191ae5aaa856a61086ed2c9faad6.bindPopup(popup_ea6b6a019475dd58966c99a5f9b0e619)
+        ;
+
+        
+    
+    
+            circle_b726191ae5aaa856a61086ed2c9faad6.bindTooltip(
+                `<div>
+                     Loop: Current CO 60 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_39b6a508321c478db12db752d539944f = L.circle(
+                [45.62641864, -73.55343656],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 711.4285714285705, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_b6321244808496a4a5872aafcda1cac3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e562564ff48da30c107edb0a2a859af4 = $(`<div id="html_e562564ff48da30c107edb0a2a859af4" style="width: 100.0%; height: 100.0%;">Loop<br>Predicted (2050): 71.14 tonnes/year</div>`)[0];
+                popup_b6321244808496a4a5872aafcda1cac3.setContent(html_e562564ff48da30c107edb0a2a859af4);
+            
+        
+
+        circle_39b6a508321c478db12db752d539944f.bindPopup(popup_b6321244808496a4a5872aafcda1cac3)
+        ;
+
+        
+    
+    
+            circle_39b6a508321c478db12db752d539944f.bindTooltip(
+                `<div>
+                     Loop: Predicted CO 71.14 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_259968ade8203c1483dc81f14234c84d = L.circle(
+                [45.23377514, -72.8554642],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1700, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_32d0c5de3d1d6cc06d983d841b61357a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_701f6b4c830e9a0153ac732afcd86c03 = $(`<div id="html_701f6b4c830e9a0153ac732afcd86c03" style="width: 100.0%; height: 100.0%;">Vignoble de la Bauge<br>Current: 170 tonnes/year</div>`)[0];
+                popup_32d0c5de3d1d6cc06d983d841b61357a.setContent(html_701f6b4c830e9a0153ac732afcd86c03);
+            
+        
+
+        circle_259968ade8203c1483dc81f14234c84d.bindPopup(popup_32d0c5de3d1d6cc06d983d841b61357a)
+        ;
+
+        
+    
+    
+            circle_259968ade8203c1483dc81f14234c84d.bindTooltip(
+                `<div>
+                     Vignoble de la Bauge: Current CO 170 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_d2d25de69e5171ddd1661651c4f116a6 = L.circle(
+                [45.23377514, -72.8554642],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2015.714285714283, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_c8329971ee727a9510c012571ea23295 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c3b1a2f0e0cfbabfad244985f37ee9b = $(`<div id="html_4c3b1a2f0e0cfbabfad244985f37ee9b" style="width: 100.0%; height: 100.0%;">Vignoble de la Bauge<br>Predicted (2050): 201.57 tonnes/year</div>`)[0];
+                popup_c8329971ee727a9510c012571ea23295.setContent(html_4c3b1a2f0e0cfbabfad244985f37ee9b);
+            
+        
+
+        circle_d2d25de69e5171ddd1661651c4f116a6.bindPopup(popup_c8329971ee727a9510c012571ea23295)
+        ;
+
+        
+    
+    
+            circle_d2d25de69e5171ddd1661651c4f116a6.bindTooltip(
+                `<div>
+                     Vignoble de la Bauge: Predicted CO 201.57 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_94d08117d3aa420228fe835cf70a6e63 = L.circle(
+                [45.5266671, -73.5958877],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 300, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_5cd82bc106b0704382b3933a144a0c25 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54985561da8c719da170d906a72a116e = $(`<div id="html_54985561da8c719da170d906a72a116e" style="width: 100.0%; height: 100.0%;">Stillgood<br>Current: 30 tonnes/year</div>`)[0];
+                popup_5cd82bc106b0704382b3933a144a0c25.setContent(html_54985561da8c719da170d906a72a116e);
+            
+        
+
+        circle_94d08117d3aa420228fe835cf70a6e63.bindPopup(popup_5cd82bc106b0704382b3933a144a0c25)
+        ;
+
+        
+    
+    
+            circle_94d08117d3aa420228fe835cf70a6e63.bindTooltip(
+                `<div>
+                     Stillgood: Current CO 30 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_02210a7f2d6d6720a9ed8a0cecd7886c = L.circle(
+                [45.5266671, -73.5958877],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 355.71428571428527, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_5231f43b3cc35c25b85a1754772d4f7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3eb2e3e661a587aebcec4073d9ea68bb = $(`<div id="html_3eb2e3e661a587aebcec4073d9ea68bb" style="width: 100.0%; height: 100.0%;">Stillgood<br>Predicted (2050): 35.57 tonnes/year</div>`)[0];
+                popup_5231f43b3cc35c25b85a1754772d4f7c.setContent(html_3eb2e3e661a587aebcec4073d9ea68bb);
+            
+        
+
+        circle_02210a7f2d6d6720a9ed8a0cecd7886c.bindPopup(popup_5231f43b3cc35c25b85a1754772d4f7c)
+        ;
+
+        
+    
+    
+            circle_02210a7f2d6d6720a9ed8a0cecd7886c.bindTooltip(
+                `<div>
+                     Stillgood: Predicted CO 35.57 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_4e2a0e1752d7d0d33f774067132c7033 = L.circle(
+                [45.53141631, -73.6543733],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 900, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_1b9d6503cfaf9dd17e256e52150326b9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f448deb3c4dfdc51385df9572f44939 = $(`<div id="html_6f448deb3c4dfdc51385df9572f44939" style="width: 100.0%; height: 100.0%;">Tricycle<br>Current: 90 tonnes/year</div>`)[0];
+                popup_1b9d6503cfaf9dd17e256e52150326b9.setContent(html_6f448deb3c4dfdc51385df9572f44939);
+            
+        
+
+        circle_4e2a0e1752d7d0d33f774067132c7033.bindPopup(popup_1b9d6503cfaf9dd17e256e52150326b9)
+        ;
+
+        
+    
+    
+            circle_4e2a0e1752d7d0d33f774067132c7033.bindTooltip(
+                `<div>
+                     Tricycle: Current CO 90 tonnes/year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_e1811ce1884bf8b0ec4fb54c96d42fec = L.circle(
+                [45.53141631, -73.6543733],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1067.1428571428557, "stroke": true, "weight": 1}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+        var popup_ad0f02592a53b4cbb1d81d8c19018b2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d8e5730953eb7c5618881b2a5b3d29ed = $(`<div id="html_d8e5730953eb7c5618881b2a5b3d29ed" style="width: 100.0%; height: 100.0%;">Tricycle<br>Predicted (2050): 106.71 tonnes/year</div>`)[0];
+                popup_ad0f02592a53b4cbb1d81d8c19018b2f.setContent(html_d8e5730953eb7c5618881b2a5b3d29ed);
+            
+        
+
+        circle_e1811ce1884bf8b0ec4fb54c96d42fec.bindPopup(popup_ad0f02592a53b4cbb1d81d8c19018b2f)
+        ;
+
+        
+    
+    
+            circle_e1811ce1884bf8b0ec4fb54c96d42fec.bindTooltip(
+                `<div>
+                     Tricycle: Predicted CO 106.71 tonnes/year (2050)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_b6e5cb89882f24c8a85f1ed5c7b35f64_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_4f5a00208433c02d01bba3d0f3531e0c,
+                },
+                overlays :  {
+                    "Current CO Quantities" : marker_cluster_d4b3bdac87f305cc591b5513dd9e1210,
+                    "Predicted CO Quantities (2050)" : marker_cluster_2e56b37e28c05f1551069de9a564a5c9,
+                    "Heat Map (Predicted CO)" : heat_map_7cd1adb4b707df61cd527f2c00c20daf,
+                },
+            };
+            let layer_control_b6e5cb89882f24c8a85f1ed5c7b35f64 = L.control.layers(
+                layer_control_b6e5cb89882f24c8a85f1ed5c7b35f64_layers.base_layers,
+                layer_control_b6e5cb89882f24c8a85f1ed5c7b35f64_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+
+        
+    
+            var tile_layer_7e470a28cd60579254403948280cd6fc = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_e1e377baa5eaa87d06afd48d55098e2c = new L.Control.MiniMap(
+                tile_layer_7e470a28cd60579254403948280cd6fc,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": false,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_c73ebf24cf02a774495b21d41c9bcf78.addControl(mini_map_e1e377baa5eaa87d06afd48d55098e2c);
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            var measure_control_776425bf853b68ce13ae1e9eab8c037c = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_c73ebf24cf02a774495b21d41c9bcf78.addControl(measure_control_776425bf853b68ce13ae1e9eab8c037c);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            tile_layer_4f5a00208433c02d01bba3d0f3531e0c.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+                marker_2eea9519945a9b05d8c0e355aac810ac.setIcon(icon_342e8af68df57ea21f1c1591f80dcbfa);
+            
+    
+                marker_12fc6f2aa63bbc4bfb63772b51a58223.setIcon(icon_ca9746df5fbd1a28261db3df7f0e9094);
+            
+    
+                marker_878ef52afc06621f45bf4badc20e654a.setIcon(icon_6a4ddf3156b6ea0476ff380d053f7e3f);
+            
+    
+                marker_f4e83f2388e30ae4d9b0df98115120e0.setIcon(icon_bf5d66f0a462f0c43bb0f77126487131);
+            
+    
+                marker_b0f7c448dbb7eeca71a0a7889702cd2e.setIcon(icon_f2827712fe3956f0cf61193db959a19c);
+            
+    
+                marker_e584fc5f1572580b45374b87bc5b7176.setIcon(icon_ac73a81d13d575be5f00c4f6c0c8ede2);
+            
+    
+                marker_2cb9ba036c5fe2b11be81577d747b0e5.setIcon(icon_c6f34dc0c744106a078741add32d6f8d);
+            
+    
+                marker_327fbe3e6c7045ac6b53241bb747fd62.setIcon(icon_658ba4ec9fe35dc948f3fe75f88cb696);
+            
+    
+                marker_68055d5081d7d828e33c8780e8659ac1.setIcon(icon_230399e56cd0a101634f30ea38a1fb56);
+            
+    
+            marker_cluster_d4b3bdac87f305cc591b5513dd9e1210.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            marker_cluster_2e56b37e28c05f1551069de9a564a5c9.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+    
+            heat_map_7cd1adb4b707df61cd527f2c00c20daf.addTo(map_c73ebf24cf02a774495b21d41c9bcf78);
+        
+</script>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ac9124da61d8c35ada3a77d8ac7f4e1e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ac9124da61d8c35ada3a77d8ac7f4e1e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ac9124da61d8c35ada3a77d8ac7f4e1e = L.map(
+                "map_ac9124da61d8c35ada3a77d8ac7f4e1e",
+                {
+                    center: [45.471791691111115, -73.42355798777777],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5e15ffbddcc526c468c82e0257e83263 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5e15ffbddcc526c468c82e0257e83263.addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var marker_5c57d8b87fc18a8534f7edf309dd1575 = L.marker(
+                [45.53508794, -73.65485832],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_dc88c08e9cd7ca63058e257196f0bfcf = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eMycelium Rem\u00e9dium\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e108,864\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_5c57d8b87fc18a8534f7edf309dd1575.setIcon(div_icon_dc88c08e9cd7ca63058e257196f0bfcf);
+        
+    
+        var popup_d92a09b230d37e6c6c94022f9258e425 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b60a8205fcc65400c92a3a2499863d0 = $(`<div id="html_5b60a8205fcc65400c92a3a2499863d0" style="width: 100.0%; height: 100.0%;"><b>Mycelium Remédium</b><br>Carbon Annuel: 108,864 kg CO₂e/tonne.km</div>`)[0];
+                popup_d92a09b230d37e6c6c94022f9258e425.setContent(html_5b60a8205fcc65400c92a3a2499863d0);
+            
+        
+
+        marker_5c57d8b87fc18a8534f7edf309dd1575.bindPopup(popup_d92a09b230d37e6c6c94022f9258e425)
+        ;
+
+        
+    
+    
+            marker_5c57d8b87fc18a8534f7edf309dd1575.bindTooltip(
+                `<div>
+                     Mycelium Remédium: 108,864 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c57d8b87fc18a8534f7edf309dd1575.setIcon(div_icon_dc88c08e9cd7ca63058e257196f0bfcf);
+            
+    
+            var marker_07eebebb3b4e9fd296de353aadb144ea = L.marker(
+                [45.539989, -73.550842],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_addf5f1b41f0c08487fd1af293145172 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eBlanc de Gris\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e1,555\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_07eebebb3b4e9fd296de353aadb144ea.setIcon(div_icon_addf5f1b41f0c08487fd1af293145172);
+        
+    
+        var popup_ae590de01ea04d7147a9fd04d59e56e5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ced54128ac00cf6244d7c7a4b47e127 = $(`<div id="html_9ced54128ac00cf6244d7c7a4b47e127" style="width: 100.0%; height: 100.0%;"><b>Blanc de Gris</b><br>Carbon Annuel: 1,555 kg CO₂e/tonne.km</div>`)[0];
+                popup_ae590de01ea04d7147a9fd04d59e56e5.setContent(html_9ced54128ac00cf6244d7c7a4b47e127);
+            
+        
+
+        marker_07eebebb3b4e9fd296de353aadb144ea.bindPopup(popup_ae590de01ea04d7147a9fd04d59e56e5)
+        ;
+
+        
+    
+    
+            marker_07eebebb3b4e9fd296de353aadb144ea.bindTooltip(
+                `<div>
+                     Blanc de Gris: 1,555 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_07eebebb3b4e9fd296de353aadb144ea.setIcon(div_icon_addf5f1b41f0c08487fd1af293145172);
+            
+    
+            var marker_dff709d089cc89c11c88fdb7295da65b = L.marker(
+                [45.54253893, -73.62951757],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_fa8b712669957666da3cb8f76090ed21 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eETOH\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e324,000\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_dff709d089cc89c11c88fdb7295da65b.setIcon(div_icon_fa8b712669957666da3cb8f76090ed21);
+        
+    
+        var popup_56e50ab1b81cca5d199dacc519a361bf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f8447cf7ba4d3a8974a03eefeb9a98b4 = $(`<div id="html_f8447cf7ba4d3a8974a03eefeb9a98b4" style="width: 100.0%; height: 100.0%;"><b>ETOH</b><br>Carbon Annuel: 324,000 kg CO₂e/tonne.km</div>`)[0];
+                popup_56e50ab1b81cca5d199dacc519a361bf.setContent(html_f8447cf7ba4d3a8974a03eefeb9a98b4);
+            
+        
+
+        marker_dff709d089cc89c11c88fdb7295da65b.bindPopup(popup_56e50ab1b81cca5d199dacc519a361bf)
+        ;
+
+        
+    
+    
+            marker_dff709d089cc89c11c88fdb7295da65b.bindTooltip(
+                `<div>
+                     ETOH: 324,000 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dff709d089cc89c11c88fdb7295da65b.setIcon(div_icon_fa8b712669957666da3cb8f76090ed21);
+            
+    
+            var marker_ef7bd32aa4682c126c6d44de746a1864 = L.marker(
+                [45.207945, -72.747009],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_f17a7fc1f0ab1f6b9b3535d694add13e = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eBrome Composte Inc\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e6,375\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_ef7bd32aa4682c126c6d44de746a1864.setIcon(div_icon_f17a7fc1f0ab1f6b9b3535d694add13e);
+        
+    
+        var popup_6c1f7b76389168a2fb3d0c459253b2d4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_299acf90605928ee460cd99cdceea87a = $(`<div id="html_299acf90605928ee460cd99cdceea87a" style="width: 100.0%; height: 100.0%;"><b>Brome Composte Inc</b><br>Carbon Annuel: 6,375 kg CO₂e/tonne.km</div>`)[0];
+                popup_6c1f7b76389168a2fb3d0c459253b2d4.setContent(html_299acf90605928ee460cd99cdceea87a);
+            
+        
+
+        marker_ef7bd32aa4682c126c6d44de746a1864.bindPopup(popup_6c1f7b76389168a2fb3d0c459253b2d4)
+        ;
+
+        
+    
+    
+            marker_ef7bd32aa4682c126c6d44de746a1864.bindTooltip(
+                `<div>
+                     Brome Composte Inc: 6,375 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ef7bd32aa4682c126c6d44de746a1864.setIcon(div_icon_f17a7fc1f0ab1f6b9b3535d694add13e);
+            
+    
+            var marker_0e1d96e97615e839546b86a46d118e40 = L.marker(
+                [45.50228716, -73.57063324],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_b57ebeebe20d62cdf36693c879b0fcc6 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003e3 Brasseurs\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e378,630\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_0e1d96e97615e839546b86a46d118e40.setIcon(div_icon_b57ebeebe20d62cdf36693c879b0fcc6);
+        
+    
+        var popup_8544daffb937b0cd139ab3b62bb81588 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d50846d137dd49e964b878aa8901189e = $(`<div id="html_d50846d137dd49e964b878aa8901189e" style="width: 100.0%; height: 100.0%;"><b>3 Brasseurs</b><br>Carbon Annuel: 378,630 kg CO₂e/tonne.km</div>`)[0];
+                popup_8544daffb937b0cd139ab3b62bb81588.setContent(html_d50846d137dd49e964b878aa8901189e);
+            
+        
+
+        marker_0e1d96e97615e839546b86a46d118e40.bindPopup(popup_8544daffb937b0cd139ab3b62bb81588)
+        ;
+
+        
+    
+    
+            marker_0e1d96e97615e839546b86a46d118e40.bindTooltip(
+                `<div>
+                     3 Brasseurs: 378,630 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0e1d96e97615e839546b86a46d118e40.setIcon(div_icon_b57ebeebe20d62cdf36693c879b0fcc6);
+            
+    
+            var marker_072edcf5dedaf5be687ebdd9d26b1055 = L.marker(
+                [45.62641864, -73.55343656],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_1169c78083ba3d692e4e85e2d835899c = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eLoop\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e28,800\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_072edcf5dedaf5be687ebdd9d26b1055.setIcon(div_icon_1169c78083ba3d692e4e85e2d835899c);
+        
+    
+        var popup_cd7779b5764a761257c738cf26ea69e9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d98e4d87c75510342afd8956e1fc15d = $(`<div id="html_4d98e4d87c75510342afd8956e1fc15d" style="width: 100.0%; height: 100.0%;"><b>Loop</b><br>Carbon Annuel: 28,800 kg CO₂e/tonne.km</div>`)[0];
+                popup_cd7779b5764a761257c738cf26ea69e9.setContent(html_4d98e4d87c75510342afd8956e1fc15d);
+            
+        
+
+        marker_072edcf5dedaf5be687ebdd9d26b1055.bindPopup(popup_cd7779b5764a761257c738cf26ea69e9)
+        ;
+
+        
+    
+    
+            marker_072edcf5dedaf5be687ebdd9d26b1055.bindTooltip(
+                `<div>
+                     Loop: 28,800 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_072edcf5dedaf5be687ebdd9d26b1055.setIcon(div_icon_1169c78083ba3d692e4e85e2d835899c);
+            
+    
+            var marker_4a2f812993e157ca7e1b7cc2f42858c3 = L.marker(
+                [45.23377514, -72.8554642],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_e9b9624f475d86a311bfaae62722b820 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eVignoble de la Bauge\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e43,200\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_4a2f812993e157ca7e1b7cc2f42858c3.setIcon(div_icon_e9b9624f475d86a311bfaae62722b820);
+        
+    
+        var popup_3b2366a9362a8d1ae07db76ad58d92fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e3e8cd6f212e883485cc7003216b6768 = $(`<div id="html_e3e8cd6f212e883485cc7003216b6768" style="width: 100.0%; height: 100.0%;"><b>Vignoble de la Bauge</b><br>Carbon Annuel: 43,200 kg CO₂e/tonne.km</div>`)[0];
+                popup_3b2366a9362a8d1ae07db76ad58d92fd.setContent(html_e3e8cd6f212e883485cc7003216b6768);
+            
+        
+
+        marker_4a2f812993e157ca7e1b7cc2f42858c3.bindPopup(popup_3b2366a9362a8d1ae07db76ad58d92fd)
+        ;
+
+        
+    
+    
+            marker_4a2f812993e157ca7e1b7cc2f42858c3.bindTooltip(
+                `<div>
+                     Vignoble de la Bauge: 43,200 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4a2f812993e157ca7e1b7cc2f42858c3.setIcon(div_icon_e9b9624f475d86a311bfaae62722b820);
+            
+    
+            var marker_3ed0a38dc4bd48d3d4caf62fff94a503 = L.marker(
+                [45.5266671, -73.5958877],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_7fbc6c99346ea9a274c62854de340fdc = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eStillgood\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e4,500,000\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_3ed0a38dc4bd48d3d4caf62fff94a503.setIcon(div_icon_7fbc6c99346ea9a274c62854de340fdc);
+        
+    
+        var popup_e3bfc5286bd8b09d57c283bc525791fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_585dd96809400cf5ada5983567e0cb28 = $(`<div id="html_585dd96809400cf5ada5983567e0cb28" style="width: 100.0%; height: 100.0%;"><b>Stillgood</b><br>Carbon Annuel: 4,500,000 kg CO₂e/tonne.km</div>`)[0];
+                popup_e3bfc5286bd8b09d57c283bc525791fe.setContent(html_585dd96809400cf5ada5983567e0cb28);
+            
+        
+
+        marker_3ed0a38dc4bd48d3d4caf62fff94a503.bindPopup(popup_e3bfc5286bd8b09d57c283bc525791fe)
+        ;
+
+        
+    
+    
+            marker_3ed0a38dc4bd48d3d4caf62fff94a503.bindTooltip(
+                `<div>
+                     Stillgood: 4,500,000 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3ed0a38dc4bd48d3d4caf62fff94a503.setIcon(div_icon_7fbc6c99346ea9a274c62854de340fdc);
+            
+    
+            var marker_ab13a5e39263f3f27d2bef237ef762f3 = L.marker(
+                [45.53141631, -73.6543733],
+                {
+}
+            ).addTo(map_ac9124da61d8c35ada3a77d8ac7f4e1e);
+        
+    
+            var div_icon_ec046c19f867a580206df40b529349a8 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        position: relative; /* Needed for transform */\n        width: 95px;\n        height: 95px;\n        border-radius: 50%; /* Makes the div circular */\n        background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%); /* Shades of Green */\n        color: #FFFFFF; /* White text for contrast */\n        font-family: \u0027Helvetica Neue\u0027, Arial, sans-serif; /* Modern font */\n        font-size: 9pt; /* Base font size */\n        text-align: center;\n        display: flex;\n        flex-direction: column; /* Stack name and quantity vertically */\n        justify-content: center; /* Center content vertically */\n        align-items: center; /* Center content horizontally */\n        box-shadow: 3px 3px 6px rgba(0,0,0,0.4); /* Softer shadow */\n        border: 1.5px solid #1B5E20; /* Darker green border */\n        /* Center the circle itself on the marker\u0027s lat/lon point */\n        transform: translate(-50%, -50%); \n        cursor: default; \n        padding: 5px; /* Internal padding */\n        box-sizing: border-box; /* Padding included in width/height */\n        \"\u003e\n        \u003cdiv style=\"font-weight: bold; font-size: 8.5pt; margin-bottom: 2px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;\"\u003eTricycle\u003c/div\u003e\n        \u003cdiv style=\"font-size: 10pt; font-weight:500; margin-bottom: 1px;\"\u003e720\u003c/div\u003e\n        \u003cdiv style=\"font-size: 6.5pt;\"\u003ekg CO\u2082e/t.km\u003c/div\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+            marker_ab13a5e39263f3f27d2bef237ef762f3.setIcon(div_icon_ec046c19f867a580206df40b529349a8);
+        
+    
+        var popup_c17cc2a4d5aa65f6158404813bb248fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc947182abdae9e52568a646ea97029b = $(`<div id="html_dc947182abdae9e52568a646ea97029b" style="width: 100.0%; height: 100.0%;"><b>Tricycle</b><br>Carbon Annuel: 720 kg CO₂e/tonne.km</div>`)[0];
+                popup_c17cc2a4d5aa65f6158404813bb248fe.setContent(html_dc947182abdae9e52568a646ea97029b);
+            
+        
+
+        marker_ab13a5e39263f3f27d2bef237ef762f3.bindPopup(popup_c17cc2a4d5aa65f6158404813bb248fe)
+        ;
+
+        
+    
+    
+            marker_ab13a5e39263f3f27d2bef237ef762f3.bindTooltip(
+                `<div>
+                     Tricycle: 720 kg CO₂e/tonne.km
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ab13a5e39263f3f27d2bef237ef762f3.setIcon(div_icon_ec046c19f867a580206df40b529349a8);
+            
+</script>
+</html>

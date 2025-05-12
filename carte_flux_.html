@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_aaa05f209adb6fc960f521663abf32b0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+<body>
+    
+    
+     <div style="
+         position: fixed;
+         bottom: 30px;
+         right: 30px;
+         width: auto;
+         min-width: 220px; /* Assurer une largeur minimale pour les exemples */
+         max-width: 350px; /* Augmenter la largeur maximale pour les longs exemples */
+         padding: 10px;
+         background-color: white;
+         border:2px solid grey;
+         z-index:9999;
+         font-size:12px;
+         border-radius: 8px;
+         box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+         ">
+       <h4 style="margin-top:0; margin-bottom:10px; text-align:center; font-weight:bold;">Légende des Flux</h4>
+       <ul style="list-style-type:none; padding-left:0; margin-bottom: 0;">
+
+       <li style="margin-bottom: 8px;">
+           <div style="display: flex; align-items: center; margin-bottom: 3px;">
+               <span style="background-color:orange;
+                            border: 1px solid #555;
+                            padding: 0px 8px;
+                            margin-right:8px;
+                            height: 10px; /* Pour aligner avec le texte */
+                            display: inline-block;">&nbsp;</span>
+               <strong style="font-weight:bold;">Matières premières</strong>
+           </div>
+           <div style="font-size:10px; color: #444; margin-left: 25px; font-style: italic; white-space: normal;">
+               Ex: Matières premières: Le Vignoble de la Bauge fournit des raisins aux 3 Brasseurs, montrant un flux long-distance du sud vers le nord
+           </div>
+       </li>
+
+       <li style="margin-bottom: 8px;">
+           <div style="display: flex; align-items: center; margin-bottom: 3px;">
+               <span style="background-color:blue;
+                            border: 1px solid #555;
+                            padding: 0px 8px;
+                            margin-right:8px;
+                            height: 10px; /* Pour aligner avec le texte */
+                            display: inline-block;">&nbsp;</span>
+               <strong style="font-weight:bold;">Produits semi-finis</strong>
+           </div>
+           <div style="font-size:10px; color: #444; margin-left: 25px; font-style: italic; white-space: normal;">
+               Ex: Produits semi-finis: Mycelium Remédium approvisionne Blanc de Gris en mycélium, représentant un flux local
+           </div>
+       </li>
+
+       <li style="margin-bottom: 8px;">
+           <div style="display: flex; align-items: center; margin-bottom: 3px;">
+               <span style="background-color:green;
+                            border: 1px solid #555;
+                            padding: 0px 8px;
+                            margin-right:8px;
+                            height: 10px; /* Pour aligner avec le texte */
+                            display: inline-block;">&nbsp;</span>
+               <strong style="font-weight:bold;">Produits finis</strong>
+           </div>
+           <div style="font-size:10px; color: #444; margin-left: 25px; font-style: italic; white-space: normal;">
+               Ex: Produits finis: Stillgood livre des snacks à ETOH, illustrant une chaîne d&#x27;approvisionnement urbaine
+           </div>
+       </li>
+
+       <li style="margin-bottom: 8px;">
+           <div style="display: flex; align-items: center; margin-bottom: 3px;">
+               <span style="background-color:red;
+                            border: 1px solid #555;
+                            padding: 0px 8px;
+                            margin-right:8px;
+                            height: 10px; /* Pour aligner avec le texte */
+                            display: inline-block;">&nbsp;</span>
+               <strong style="font-weight:bold;">Déchets valorisables</strong>
+           </div>
+           <div style="font-size:10px; color: #444; margin-left: 25px; font-style: italic; white-space: normal;">
+               Ex: Déchets valorisables: Les 3 Brasseurs envoient leurs drêches à Brome Composte Inc, démontrant un flux de recyclage sur longue distance
+           </div>
+       </li>
+
+       <li style="margin-bottom: 8px;">
+           <div style="display: flex; align-items: center; margin-bottom: 3px;">
+               <span style="background-color:purple;
+                            border: 1px solid #555;
+                            padding: 0px 8px;
+                            margin-right:8px;
+                            height: 10px; /* Pour aligner avec le texte */
+                            display: inline-block;">&nbsp;</span>
+               <strong style="font-weight:bold;">Produits recyclés</strong>
+           </div>
+           <div style="font-size:10px; color: #444; margin-left: 25px; font-style: italic; white-space: normal;">
+               Ex: Produits recyclés: Blanc de Gris fournit des produits à Loop, complétant le cycle de l&#x27;économie circulaire
+           </div>
+       </li>
+
+       <li style="margin-bottom: 8px;">
+           <div style="display: flex; align-items: center; margin-bottom: 3px;">
+               <span style="background-color:brown;
+                            border: 1px solid #555;
+                            padding: 0px 8px;
+                            margin-right:8px;
+                            height: 10px; /* Pour aligner avec le texte */
+                            display: inline-block;">&nbsp;</span>
+               <strong style="font-weight:bold;">Déchets professionnels</strong>
+           </div>
+           <div style="font-size:10px; color: #444; margin-left: 25px; font-style: italic; white-space: normal;">
+               Ex: Déchets professionnels : Tricycle collecte, trie et valorise les déchets (papier, carton, mobilier, etc.) auprès des 3 Brasseurs pour recyclage ou réemploi
+           </div>
+       </li>
+</ul></div>
+    
+            <div class="folium-map" id="map_aaa05f209adb6fc960f521663abf32b0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_aaa05f209adb6fc960f521663abf32b0 = L.map(
+                "map_aaa05f209adb6fc960f521663abf32b0",
+                {
+                    center: [45.5236, -73.6],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c35cfe2fa75f24110594cfa8d1d8263a = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c35cfe2fa75f24110594cfa8d1d8263a.addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var marker_81c3ff79fc3f2ea0cedf53aa58445dab = L.marker(
+                [45.1784, -72.7153],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_b6862c276eeac5f4579eacfde661c918 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "leaf",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_81c3ff79fc3f2ea0cedf53aa58445dab.bindTooltip(
+                `<div>
+                     <b>Vignoble de la Bauge</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_81c3ff79fc3f2ea0cedf53aa58445dab.setIcon(icon_b6862c276eeac5f4579eacfde661c918);
+            
+    
+            var marker_2a4bee07c59bf75c72423088dc4586d6 = L.marker(
+                [45.1784, -72.7153],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_dfdbf8653f5af156229f3278edeb0e3c = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Vignoble de la Bauge\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_2a4bee07c59bf75c72423088dc4586d6.setIcon(div_icon_dfdbf8653f5af156229f3278edeb0e3c);
+        
+    
+                marker_2a4bee07c59bf75c72423088dc4586d6.setIcon(div_icon_dfdbf8653f5af156229f3278edeb0e3c);
+            
+    
+            var marker_16bb39a8ed5567e73702b82d1be9afef = L.marker(
+                [45.5017, -73.5673],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_321b89267511a39eeddcf28fcb9b2c7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "beer",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_16bb39a8ed5567e73702b82d1be9afef.bindTooltip(
+                `<div>
+                     <b>3 Brasseurs</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_16bb39a8ed5567e73702b82d1be9afef.setIcon(icon_321b89267511a39eeddcf28fcb9b2c7b);
+            
+    
+            var marker_a9fe23d738bb840f62b8bfddef8c676e = L.marker(
+                [45.5017, -73.5673],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_522fa3a5374521e3a3c365e2c5224b76 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        3 Brasseurs\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_a9fe23d738bb840f62b8bfddef8c676e.setIcon(div_icon_522fa3a5374521e3a3c365e2c5224b76);
+        
+    
+                marker_a9fe23d738bb840f62b8bfddef8c676e.setIcon(div_icon_522fa3a5374521e3a3c365e2c5224b76);
+            
+    
+            var marker_a3892fe860d6eec70ac81a6d781ea899 = L.marker(
+                [45.5325, -73.589],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_587f1b74396be58c96121e5247226462 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_a3892fe860d6eec70ac81a6d781ea899.bindTooltip(
+                `<div>
+                     <b>Mycelium Remédium</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a3892fe860d6eec70ac81a6d781ea899.setIcon(icon_587f1b74396be58c96121e5247226462);
+            
+    
+            var marker_11a7a8ffdccbc94d149f1d60b9c23624 = L.marker(
+                [45.5325, -73.589],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_06cc499868c2ea3e2fceb12ee3eae7cf = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Mycelium Rem\u00e9dium\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_11a7a8ffdccbc94d149f1d60b9c23624.setIcon(div_icon_06cc499868c2ea3e2fceb12ee3eae7cf);
+        
+    
+                marker_11a7a8ffdccbc94d149f1d60b9c23624.setIcon(div_icon_06cc499868c2ea3e2fceb12ee3eae7cf);
+            
+    
+            var marker_073e9b8f7b291d321caed6958f567ede = L.marker(
+                [45.56, -73.57],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_db097f54a335edf4735d8a3ebae358be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_073e9b8f7b291d321caed6958f567ede.bindTooltip(
+                `<div>
+                     <b>Blanc de Gris</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_073e9b8f7b291d321caed6958f567ede.setIcon(icon_db097f54a335edf4735d8a3ebae358be);
+            
+    
+            var marker_6aa269bd06fec638227b501f8663e4ac = L.marker(
+                [45.56, -73.57],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_f9db85c216d55c6fde477388aba1dad7 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Blanc de Gris\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_6aa269bd06fec638227b501f8663e4ac.setIcon(div_icon_f9db85c216d55c6fde477388aba1dad7);
+        
+    
+                marker_6aa269bd06fec638227b501f8663e4ac.setIcon(div_icon_f9db85c216d55c6fde477388aba1dad7);
+            
+    
+            var marker_32df44d5e0a502dd75def01d5c68d19e = L.marker(
+                [45.51, -73.565],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_7b37cc4a6af905c6b131af562c65a352 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_32df44d5e0a502dd75def01d5c68d19e.bindTooltip(
+                `<div>
+                     <b>Stillgood</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_32df44d5e0a502dd75def01d5c68d19e.setIcon(icon_7b37cc4a6af905c6b131af562c65a352);
+            
+    
+            var marker_17b0c72a470acdcf0237c2c3fadf0289 = L.marker(
+                [45.51, -73.565],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_11a1007661a29574a6118aa32395b371 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Stillgood\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_17b0c72a470acdcf0237c2c3fadf0289.setIcon(div_icon_11a1007661a29574a6118aa32395b371);
+        
+    
+                marker_17b0c72a470acdcf0237c2c3fadf0289.setIcon(div_icon_11a1007661a29574a6118aa32395b371);
+            
+    
+            var marker_dff6a11a376681ef2e0a9a8936062ac7 = L.marker(
+                [45.505, -73.575],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_18b11778dbc004a8221f6b946f1c62d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_dff6a11a376681ef2e0a9a8936062ac7.bindTooltip(
+                `<div>
+                     <b>ETOH</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dff6a11a376681ef2e0a9a8936062ac7.setIcon(icon_18b11778dbc004a8221f6b946f1c62d6);
+            
+    
+            var marker_e8d07531509f5e9343b9b46de53902dc = L.marker(
+                [45.505, -73.575],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_10f9d8163dd6b429bd721ebbcf051d37 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        ETOH\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_e8d07531509f5e9343b9b46de53902dc.setIcon(div_icon_10f9d8163dd6b429bd721ebbcf051d37);
+        
+    
+                marker_e8d07531509f5e9343b9b46de53902dc.setIcon(div_icon_10f9d8163dd6b429bd721ebbcf051d37);
+            
+    
+            var marker_ab07626b29b0d7f1453022cbc04480c7 = L.marker(
+                [45.25, -72.95],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_1273d08d027027a8a9c392afb6a49c28 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "seedling",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ab07626b29b0d7f1453022cbc04480c7.bindTooltip(
+                `<div>
+                     <b>Brome Composte Inc</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ab07626b29b0d7f1453022cbc04480c7.setIcon(icon_1273d08d027027a8a9c392afb6a49c28);
+            
+    
+            var marker_48b65ee418ab80df3f98855e9d3a3a39 = L.marker(
+                [45.25, -72.95],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_acb787e772f8705a5332bde3495c4148 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Brome Composte Inc\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_48b65ee418ab80df3f98855e9d3a3a39.setIcon(div_icon_acb787e772f8705a5332bde3495c4148);
+        
+    
+                marker_48b65ee418ab80df3f98855e9d3a3a39.setIcon(div_icon_acb787e772f8705a5332bde3495c4148);
+            
+    
+            var marker_578b7cbe13abca9a183951349467b687 = L.marker(
+                [45.54, -73.58],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_3dc4932552d20306738661a2f55925d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_578b7cbe13abca9a183951349467b687.bindTooltip(
+                `<div>
+                     <b>Loop</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_578b7cbe13abca9a183951349467b687.setIcon(icon_3dc4932552d20306738661a2f55925d9);
+            
+    
+            var marker_3bb26581b623ddf20e38a5d8defc8158 = L.marker(
+                [45.54, -73.58],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_b4ee5549b6ee0d2d9ba8121844aca46c = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Loop\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_3bb26581b623ddf20e38a5d8defc8158.setIcon(div_icon_b4ee5549b6ee0d2d9ba8121844aca46c);
+        
+    
+                marker_3bb26581b623ddf20e38a5d8defc8158.setIcon(div_icon_b4ee5549b6ee0d2d9ba8121844aca46c);
+            
+    
+            var marker_1d3dd8e5a30fefa55a454b039d17f050 = L.marker(
+                [45.52, -73.6],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var icon_abcd5be67369116bea16f673ea0513af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "recycle",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_1d3dd8e5a30fefa55a454b039d17f050.bindTooltip(
+                `<div>
+                     <b>Tricycle</b>
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1d3dd8e5a30fefa55a454b039d17f050.setIcon(icon_abcd5be67369116bea16f673ea0513af);
+            
+    
+            var marker_186c40e6b4ce392be6a37fde1bcc1564 = L.marker(
+                [45.52, -73.6],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_7c65e34e20e8fbe3b5e584a82b94ca5b = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 10px;\n        font-weight: bold;\n        color: #333;\n        background-color: rgba(255, 255, 255, 0.7);\n        padding: 2px 4px;\n        border-radius: 3px;\n        white-space: nowrap;\n        transform: translate(10px, -25px);\n    \"\u003e\n        Tricycle\n    \u003c/div\u003e\n    ",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+            marker_186c40e6b4ce392be6a37fde1bcc1564.setIcon(div_icon_7c65e34e20e8fbe3b5e584a82b94ca5b);
+        
+    
+                marker_186c40e6b4ce392be6a37fde1bcc1564.setIcon(div_icon_7c65e34e20e8fbe3b5e584a82b94ca5b);
+            
+    
+            ant_path_17b4428cf61d3c9ef948dc417876a947 = L.polyline.antPath(
+              [[45.1784, -72.7153], [45.5017, -73.5673]],
+              {
+  "stroke": true,
+  "color": "orange",
+  "weight": 3,
+  "opacity": 0.8,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+5,
+5,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "orange",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "orange",
+}
+        ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            ant_path_17b4428cf61d3c9ef948dc417876a947.bindTooltip(
+                `<div>
+                     De: Vignoble de la Bauge<br>À: 3 Brasseurs<br>Type: Matières premières
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_117bb74f1dc77f00a3c8fb55a7e06361 = L.marker(
+                [45.340050000000005, -73.1413],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_a37af717d91b98b26b90e9cd9d585f67 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 9px;\n        font-family: Arial, sans-serif;\n        color: orange;\n        background-color: rgba(255, 255, 255, 0.85);\n        padding: 3px 5px;\n        border: 1px solid orange;\n        border-radius: 5px;\n        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);\n        text-align: center;\n        white-space: normal;\n        max-width: 150px;\n    \"\u003e\n        \u003cb\u003eMati\u00e8res premi\u00e8res\u003c/b\u003e\u003cbr\u003eVignoble \u0026rarr; 3\n    \u003c/div\u003e\n    ",
+  "iconSize": [100, 30],
+  "iconAnchor": [-10, 15],
+  "className": "empty",
+});
+            marker_117bb74f1dc77f00a3c8fb55a7e06361.setIcon(div_icon_a37af717d91b98b26b90e9cd9d585f67);
+        
+    
+            marker_117bb74f1dc77f00a3c8fb55a7e06361.bindTooltip(
+                `<div>
+                     Matières premières: Le Vignoble de la Bauge fournit des raisins aux 3 Brasseurs, montrant un flux long-distance du sud vers le nord
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_117bb74f1dc77f00a3c8fb55a7e06361.setIcon(div_icon_a37af717d91b98b26b90e9cd9d585f67);
+            
+    
+            ant_path_677e3dd83f443f7cbc1764142e88b5d1 = L.polyline.antPath(
+              [[45.5325, -73.589], [45.56, -73.57]],
+              {
+  "stroke": true,
+  "color": "blue",
+  "weight": 3,
+  "opacity": 0.8,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+10,
+5,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "blue",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "blue",
+}
+        ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            ant_path_677e3dd83f443f7cbc1764142e88b5d1.bindTooltip(
+                `<div>
+                     De: Mycelium Remédium<br>À: Blanc de Gris<br>Type: Produits semi-finis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1f4f3d05fda93885e5e89f75f10ebd05 = L.marker(
+                [45.54625, -73.5795],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_427040edeef7dc63034300650b01b2e7 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 9px;\n        font-family: Arial, sans-serif;\n        color: blue;\n        background-color: rgba(255, 255, 255, 0.85);\n        padding: 3px 5px;\n        border: 1px solid blue;\n        border-radius: 5px;\n        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);\n        text-align: center;\n        white-space: normal;\n        max-width: 150px;\n    \"\u003e\n        \u003cb\u003eProduits semi-finis\u003c/b\u003e\u003cbr\u003eMycelium \u0026rarr; Blanc\n    \u003c/div\u003e\n    ",
+  "iconSize": [100, 30],
+  "iconAnchor": [-10, 15],
+  "className": "empty",
+});
+            marker_1f4f3d05fda93885e5e89f75f10ebd05.setIcon(div_icon_427040edeef7dc63034300650b01b2e7);
+        
+    
+            marker_1f4f3d05fda93885e5e89f75f10ebd05.bindTooltip(
+                `<div>
+                     Produits semi-finis: Mycelium Remédium approvisionne Blanc de Gris en mycélium, représentant un flux local
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f4f3d05fda93885e5e89f75f10ebd05.setIcon(div_icon_427040edeef7dc63034300650b01b2e7);
+            
+    
+            ant_path_ba298b1d2ebcb71900da8049b505ddf5 = L.polyline.antPath(
+              [[45.51, -73.565], [45.505, -73.575]],
+              {
+  "stroke": true,
+  "color": "green",
+  "weight": 3,
+  "opacity": 0.8,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "green",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "green",
+}
+        ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            ant_path_ba298b1d2ebcb71900da8049b505ddf5.bindTooltip(
+                `<div>
+                     De: Stillgood<br>À: ETOH<br>Type: Produits finis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ce80a1842b7b99af848a0c2fcf65a5d4 = L.marker(
+                [45.5075, -73.57],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_70e53b3982cfbce686c5aaa9be482a7c = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 9px;\n        font-family: Arial, sans-serif;\n        color: green;\n        background-color: rgba(255, 255, 255, 0.85);\n        padding: 3px 5px;\n        border: 1px solid green;\n        border-radius: 5px;\n        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);\n        text-align: center;\n        white-space: normal;\n        max-width: 150px;\n    \"\u003e\n        \u003cb\u003eProduits finis\u003c/b\u003e\u003cbr\u003eStillgood \u0026rarr; ETOH\n    \u003c/div\u003e\n    ",
+  "iconSize": [100, 30],
+  "iconAnchor": [-10, 15],
+  "className": "empty",
+});
+            marker_ce80a1842b7b99af848a0c2fcf65a5d4.setIcon(div_icon_70e53b3982cfbce686c5aaa9be482a7c);
+        
+    
+            marker_ce80a1842b7b99af848a0c2fcf65a5d4.bindTooltip(
+                `<div>
+                     Produits finis: Stillgood livre des snacks à ETOH, illustrant une chaîne d'approvisionnement urbaine
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ce80a1842b7b99af848a0c2fcf65a5d4.setIcon(div_icon_70e53b3982cfbce686c5aaa9be482a7c);
+            
+    
+            ant_path_946581e5057a8ad0b9d166eda37c6f82 = L.polyline.antPath(
+              [[45.5017, -73.5673], [45.25, -72.95]],
+              {
+  "stroke": true,
+  "color": "red",
+  "weight": 3,
+  "opacity": 0.8,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+15,
+10,
+5,
+10,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "red",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "red",
+}
+        ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            ant_path_946581e5057a8ad0b9d166eda37c6f82.bindTooltip(
+                `<div>
+                     De: 3 Brasseurs<br>À: Brome Composte Inc<br>Type: Déchets valorisables
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_bd1033850698374d72d6113127a80d6b = L.marker(
+                [45.37585, -73.25865],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_87b41d20135da389e6d462f0f3aac8be = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 9px;\n        font-family: Arial, sans-serif;\n        color: red;\n        background-color: rgba(255, 255, 255, 0.85);\n        padding: 3px 5px;\n        border: 1px solid red;\n        border-radius: 5px;\n        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);\n        text-align: center;\n        white-space: normal;\n        max-width: 150px;\n    \"\u003e\n        \u003cb\u003eD\u00e9chets valorisables\u003c/b\u003e\u003cbr\u003e3 \u0026rarr; Brome\n    \u003c/div\u003e\n    ",
+  "iconSize": [100, 30],
+  "iconAnchor": [-10, 15],
+  "className": "empty",
+});
+            marker_bd1033850698374d72d6113127a80d6b.setIcon(div_icon_87b41d20135da389e6d462f0f3aac8be);
+        
+    
+            marker_bd1033850698374d72d6113127a80d6b.bindTooltip(
+                `<div>
+                     Déchets valorisables: Les 3 Brasseurs envoient leurs drêches à Brome Composte Inc, démontrant un flux de recyclage sur longue distance
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bd1033850698374d72d6113127a80d6b.setIcon(div_icon_87b41d20135da389e6d462f0f3aac8be);
+            
+    
+            ant_path_10c549071690fec3c466944c705a2a1a = L.polyline.antPath(
+              [[45.56, -73.57], [45.54, -73.58]],
+              {
+  "stroke": true,
+  "color": "purple",
+  "weight": 3,
+  "opacity": 0.8,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": null,
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "purple",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "purple",
+}
+        ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            ant_path_10c549071690fec3c466944c705a2a1a.bindTooltip(
+                `<div>
+                     De: Blanc de Gris<br>À: Loop<br>Type: Produits recyclés
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2f67fd3ec9457c0f8b7b93b093294d49 = L.marker(
+                [45.55, -73.57499999999999],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_c2789c198b51c6bffaf7ad147a1cec4f = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 9px;\n        font-family: Arial, sans-serif;\n        color: purple;\n        background-color: rgba(255, 255, 255, 0.85);\n        padding: 3px 5px;\n        border: 1px solid purple;\n        border-radius: 5px;\n        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);\n        text-align: center;\n        white-space: normal;\n        max-width: 150px;\n    \"\u003e\n        \u003cb\u003eProduits recycl\u00e9s\u003c/b\u003e\u003cbr\u003eBlanc \u0026rarr; Loop\n    \u003c/div\u003e\n    ",
+  "iconSize": [100, 30],
+  "iconAnchor": [-10, 15],
+  "className": "empty",
+});
+            marker_2f67fd3ec9457c0f8b7b93b093294d49.setIcon(div_icon_c2789c198b51c6bffaf7ad147a1cec4f);
+        
+    
+            marker_2f67fd3ec9457c0f8b7b93b093294d49.bindTooltip(
+                `<div>
+                     Produits recyclés: Blanc de Gris fournit des produits à Loop, complétant le cycle de l'économie circulaire
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f67fd3ec9457c0f8b7b93b093294d49.setIcon(div_icon_c2789c198b51c6bffaf7ad147a1cec4f);
+            
+    
+            ant_path_5567ff1db54712ec19e6ac833420aafb = L.polyline.antPath(
+              [[45.5017, -73.5673], [45.52, -73.6]],
+              {
+  "stroke": true,
+  "color": "brown",
+  "weight": 3,
+  "opacity": 0.8,
+  "lineCap": "round",
+  "lineJoin": "round",
+  "dashArray": [
+8,
+8,
+],
+  "dashOffset": null,
+  "fill": false,
+  "fillColor": "brown",
+  "fillOpacity": 0.2,
+  "fillRule": "evenodd",
+  "bubblingMouseEvents": true,
+  "smoothFactor": 1.0,
+  "noClip": false,
+  "paused": false,
+  "reverse": false,
+  "hardwareAcceleration": false,
+  "delay": 800,
+  "pulseColor": "brown",
+}
+        ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            ant_path_5567ff1db54712ec19e6ac833420aafb.bindTooltip(
+                `<div>
+                     De: 3 Brasseurs<br>À: Tricycle<br>Type: Déchets professionnels
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d59778bf9a4754e5a35e24af4bfe9d66 = L.marker(
+                [45.510850000000005, -73.58365],
+                {
+}
+            ).addTo(map_aaa05f209adb6fc960f521663abf32b0);
+        
+    
+            var div_icon_93d5eb2fdb05006df5676631a555d118 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        font-size: 9px;\n        font-family: Arial, sans-serif;\n        color: brown;\n        background-color: rgba(255, 255, 255, 0.85);\n        padding: 3px 5px;\n        border: 1px solid brown;\n        border-radius: 5px;\n        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);\n        text-align: center;\n        white-space: normal;\n        max-width: 150px;\n    \"\u003e\n        \u003cb\u003eD\u00e9chets professionnels\u003c/b\u003e\u003cbr\u003e3 \u0026rarr; Tricycle\n    \u003c/div\u003e\n    ",
+  "iconSize": [100, 30],
+  "iconAnchor": [-10, 15],
+  "className": "empty",
+});
+            marker_d59778bf9a4754e5a35e24af4bfe9d66.setIcon(div_icon_93d5eb2fdb05006df5676631a555d118);
+        
+    
+            marker_d59778bf9a4754e5a35e24af4bfe9d66.bindTooltip(
+                `<div>
+                     Déchets professionnels : Tricycle collecte, trie et valorise les déchets (papier, carton, mobilier, etc.) auprès des 3 Brasseurs pour recyclage ou réemploi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d59778bf9a4754e5a35e24af4bfe9d66.setIcon(div_icon_93d5eb2fdb05006df5676631a555d118);
+            
+</script>
+</html>
